@@ -5,18 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="referrer" content="no-referrer">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src 'unsafe-inline' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
-<title>AWiki · 让工作接着发生</title>
+<title>AWiki · 文档有位置，讨论有来历</title>
 <style>:root{color-scheme:light dark;background:light-dark(rgb(255 255 255), rgb(24 24 24))}html,body{margin:0}body{box-sizing:border-box;padding:1rem;background:inherit}iframe{display:block;width:100%;height:calc(100vh - 2rem);margin:0 auto;border:0}</style>
 </head>
 <body>
-<iframe sandbox="allow-scripts" referrerpolicy="no-referrer" title="AWiki · 让工作接着发生" srcdoc="&lt;!doctype html&gt;
+<iframe sandbox="allow-scripts" referrerpolicy="no-referrer" title="AWiki · 文档有位置，讨论有来历" srcdoc="&lt;!doctype html&gt;
 &lt;html lang=&quot;en&quot; data-visualize-standalone&gt;
 &lt;head&gt;
 &lt;meta charset=&quot;utf-8&quot;&gt;
 &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
 &lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot;&gt;
 &lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;default-src &#x27;none&#x27;; script-src &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27; &#x27;wasm-unsafe-eval&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src &#x27;unsafe-inline&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src &#x27;none&#x27;; object-src &#x27;none&#x27;; base-uri &#x27;none&#x27;; form-action &#x27;none&#x27;&quot;&gt;
-&lt;title&gt;AWiki · 让工作接着发生&lt;/title&gt;
+&lt;title&gt;AWiki · 文档有位置，讨论有来历&lt;/title&gt;
 &lt;style&gt;:root {
   color-scheme: light dark;
   background-color: var(
@@ -1075,6 +1075,39 @@ html&gt;body{padding:0}&lt;/style&gt;
 &lt;button data-explain=&quot;home&quot; aria-current=&quot;step&quot;&gt;1 找到工作&lt;/button&gt;
 &lt;button data-explain=&quot;doc&quot;&gt;2 想起背景&lt;/button&gt;
 &lt;button data-explain=&quot;continue&quot;&gt;3 带着问题继续&lt;/button&gt;
+&lt;style&gt;
+#wh-personal .realspace{display:grid;grid-template-columns:185px minmax(0,1fr);gap:18px;margin-top:24px;align-items:start}
+#wh-personal .real-tree{padding:18px 12px;background:var(--wh-paper);border:1px solid var(--wh-line);border-radius:12px}
+#wh-personal .real-tree button{display:block;text-align:left;width:100%;border:0;background:transparent;font-size:13px;padding:12px 10px;margin:3px 0;line-height:1.5}
+#wh-personal .real-tree button[aria-pressed=&quot;true&quot;]{background:var(--wh-soft);color:var(--wh-accent)}
+#wh-personal .branch{margin-left:8px;border-left:1px solid var(--wh-line);padding-left:5px}
+#wh-personal .real-paper{background:var(--wh-paper);padding:24px;border:1px solid var(--wh-line);border-radius:12px;box-shadow:0 6px 20px color-mix(in srgb,var(--wh-ink) 5%,transparent)}
+#wh-personal .real-source{margin:18px 0 0;padding:17px;border:1px solid var(--wh-line);border-radius:12px;background:var(--wh-soft)}
+#wh-personal .paper-rule{height:5px;border-radius:5px;background:var(--wh-line);margin:11px 0;width:80%;opacity:.6}
+#wh-personal .real-steps{display:flex;gap:9px;flex-wrap:wrap;font-size:12px;color:var(--wh-muted);margin:16px 0}
+#wh-personal .real-entry{font-size:13px;margin-top:16px}#wh-personal .real-source p{font-size:13px;margin:7px 0}
+#wh-personal .real-counts{display:flex;gap:18px;flex-wrap:wrap;font-size:12px;color:var(--wh-muted);margin:14px 0}
+#wh-personal .real-counts b{font-size:18px;font-weight:500;color:var(--wh-ink);margin-right:4px}
+#wh-personal details.architecture&gt;summary{cursor:pointer;font-size:17px;font-weight:500;padding:4px 0}
+@media(max-width:620px){#wh-personal .realspace{grid-template-columns:1fr}#wh-personal .real-paper{padding:18px}#wh-personal .real-tree{padding:12px}}
+&lt;/style&gt;
+&lt;script&gt;
+function whRealInit(){
+const r=document.getElementById(&#x27;wh-personal&#x27;);const home=r.querySelector(&#x27;[data-screen=&quot;home&quot;]&#x27;);
+home.innerHTML=`&lt;div class=&quot;eyebrow&quot;&gt;我的文档空间 / 示例数据&lt;/div&gt;&lt;h1 id=&quot;wh-greeting&quot;&gt;文档有位置，讨论有来历。&lt;/h1&gt;&lt;p class=&quot;muted&quot;&gt;不再找“我在哪聊过”。从正在做的事情开始。&lt;/p&gt;&lt;div class=&quot;real-counts&quot;&gt;&lt;span&gt;&lt;b&gt;1&lt;/b&gt;工作项目&lt;/span&gt;&lt;span&gt;&lt;b&gt;3&lt;/b&gt;子文档&lt;/span&gt;&lt;span&gt;&lt;b&gt;2&lt;/b&gt;已登记会话&lt;/span&gt;&lt;span&gt;演示范围 · 不是账户实际数量&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;realspace&quot;&gt;&lt;div class=&quot;real-tree&quot;&gt;&lt;h3&gt;▤ 家庭旅行&lt;/h3&gt;&lt;div class=&quot;meta&quot;&gt;工作空间 / 3 篇原文&lt;/div&gt;&lt;div class=&quot;branch&quot;&gt;&lt;button data-real-doc=&quot;route&quot; aria-pressed=&quot;true&quot;&gt;▤ 每日路线草案&lt;/button&gt;&lt;button data-real-doc=&quot;stay&quot; aria-pressed=&quot;false&quot;&gt;▤ 住宿选择与取舍&lt;/button&gt;&lt;button data-real-doc=&quot;traffic&quot; aria-pressed=&quot;false&quot;&gt;▤ 交通待确认清单&lt;/button&gt;&lt;/div&gt;&lt;div class=&quot;line sub&quot;&gt;文档仍保存在飞书&lt;br&gt;这里组织它们的关系&lt;/div&gt;&lt;/div&gt;
+&lt;div&gt;&lt;div class=&quot;real-paper&quot;&gt;&lt;div class=&quot;flex spread&quot;&gt;&lt;span class=&quot;tag&quot;&gt;原文预览 · 演示&lt;/span&gt;&lt;span class=&quot;sub&quot;&gt;家庭旅行 / 子页面&lt;/span&gt;&lt;/div&gt;&lt;h2 id=&quot;real-title&quot; style=&quot;margin-top:20px&quot;&gt;每日路线草案&lt;/h2&gt;&lt;p id=&quot;real-purpose&quot; class=&quot;muted&quot;&gt;目标：让一家人轻松出行，不追求景点数量。&lt;/p&gt;&lt;div class=&quot;real-steps&quot;&gt;&lt;span&gt;已讨论&lt;/span&gt;&lt;span&gt;→&lt;/span&gt;&lt;span&gt;已有草案&lt;/span&gt;&lt;span&gt;→&lt;/span&gt;&lt;span&gt;还有一个决定&lt;/span&gt;&lt;/div&gt;&lt;h3&gt;已经确定&lt;/h3&gt;&lt;p id=&quot;real-decisions&quot;&gt;全程住在同一区域，每天只安排一个主要目的地，午后留出休息时间。&lt;/p&gt;&lt;div class=&quot;paper-rule&quot; aria-hidden=&quot;true&quot;&gt;&lt;/div&gt;&lt;div class=&quot;paper-rule&quot; style=&quot;width:57%&quot; aria-hidden=&quot;true&quot;&gt;&lt;/div&gt;&lt;blockquote id=&quot;real-question&quot;&gt;第三天是否保留岚山？担心交通与步行让家人太累。&lt;/blockquote&gt;&lt;button class=&quot;primary&quot; id=&quot;real-open&quot;&gt;打开文档与背景 →&lt;/button&gt;&lt;/div&gt;
+&lt;div style=&quot;text-align:center;font-size:12px;color:var(--wh-muted);padding-top:13px&quot;&gt;↑ 这份成果，来自下面的讨论&lt;/div&gt;&lt;div class=&quot;real-source&quot;&gt;&lt;div class=&quot;flex spread&quot;&gt;&lt;h3 id=&quot;real-session&quot;&gt;一家人的秋日旅行&lt;/h3&gt;&lt;span class=&quot;tag&quot;&gt;会话自述&lt;/span&gt;&lt;/div&gt;&lt;p id=&quot;real-summary&quot;&gt;我们讨论过家人的节奏和住宿位置。路线已成形，下一步是减少第三天的负担。&lt;/p&gt;&lt;div class=&quot;meta&quot; id=&quot;real-platform&quot;&gt;ChatGPT · 已登记背景，不代表当前正在运行&lt;/div&gt;&lt;button id=&quot;real-context&quot;&gt;看看这个上下文&lt;/button&gt;&lt;div id=&quot;real-context-detail&quot; hidden class=&quot;line&quot;&gt;&lt;p&gt;来源：会话自述（演示）&lt;/p&gt;&lt;p id=&quot;real-next&quot;&gt;下一步：比较保留岚山与留在市区两个方案。&lt;/p&gt;&lt;p&gt;会话标识和时间在此省略；正式页面显示可核实信息。&lt;/p&gt;&lt;button id=&quot;real-resume&quot;&gt;选择上下文，接着讨论 →&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;`;
+const data={route:[&#x27;每日路线草案&#x27;,&#x27;让一家人轻松出行，不追求景点数量。&#x27;,&#x27;全程住在同一区域，每天只安排一个主要目的地，午后留出休息时间。&#x27;,&#x27;第三天是否保留岚山？担心交通与步行让家人太累。&#x27;,&#x27;一家人的秋日旅行&#x27;,&#x27;我们讨论过家人的节奏和住宿位置。路线已成形，下一步是减少第三天的负担。&#x27;,&#x27;比较保留岚山与留在市区两个方案。&#x27;],stay:[&#x27;住宿选择与取舍&#x27;,&#x27;少搬行李，让每天出门与返回都轻松。&#x27;,&#x27;先固定一个住宿区域，再围绕酒店安排行程；不为了景点每天换酒店。&#x27;,&#x27;应该优先靠近车站，还是选安静的小街区？&#x27;,&#x27;一家人的秋日旅行&#x27;,&#x27;这份住宿决定和路线出自同一个讨论，上下文可以一起保留。&#x27;,&#x27;比较交通方便与夜间安静的取舍。&#x27;],traffic:[&#x27;交通待确认清单&#x27;,&#x27;把不确定的交通问题提前弄清楚。&#x27;,&#x27;交通安排服从家人的节奏，不为了使用某张通票额外绕路。&#x27;,&#x27;岚山当天往返怎样更省力？还没有核实具体时刻。&#x27;,&#x27;出行前的交通核对&#x27;,&#x27;这是另一个已登记的讨论，集中处理交通疑问，不重复改写整个计划。&#x27;,&#x27;核实可行路线，再把结果补回计划。&#x27;]};let selected=&#x27;route&#x27;;
+function select(k){selected=k;const d=data[k];[&#x27;title&#x27;,&#x27;purpose&#x27;,&#x27;decisions&#x27;,&#x27;question&#x27;,&#x27;session&#x27;,&#x27;summary&#x27;,&#x27;next&#x27;].forEach((x,i)=&gt;r.querySelector(&#x27;#real-&#x27;+x).textContent=(x===&#x27;purpose&#x27;?&#x27;目标：&#x27;:x===&#x27;next&#x27;?&#x27;下一步：&#x27;:&#x27;&#x27;)+d[i]);r.querySelectorAll(&#x27;[data-real-doc]&#x27;).forEach(b=&gt;b.setAttribute(&#x27;aria-pressed&#x27;,String(b.dataset.realDoc===k)));r.querySelector(&#x27;#real-open&#x27;).textContent=k===&#x27;route&#x27;?&#x27;打开文档与背景 →&#x27;:&#x27;查看这份文档的来历 ↓&#x27;;r.querySelector(&#x27;#real-context-detail&#x27;).hidden=true}
+r.querySelectorAll(&#x27;[data-real-doc]&#x27;).forEach(b=&gt;b.addEventListener(&#x27;click&#x27;,()=&gt;select(b.dataset.realDoc)));
+r.querySelector(&#x27;#real-open&#x27;).addEventListener(&#x27;click&#x27;,()=&gt;{if(selected===&#x27;route&#x27;)r.querySelector(&#x27;nav [data-page=&quot;doc&quot;]&#x27;).click();else r.querySelector(&#x27;#real-context-detail&#x27;).hidden=false});
+r.querySelector(&#x27;#real-context&#x27;).addEventListener(&#x27;click&#x27;,()=&gt;{const d=r.querySelector(&#x27;#real-context-detail&#x27;);d.hidden=!d.hidden});
+r.querySelector(&#x27;#real-resume&#x27;).addEventListener(&#x27;click&#x27;,()=&gt;{if(selected!==&#x27;route&#x27;){r.querySelector(&#x27;#real-next&#x27;).textContent=&#x27;演示边界：完整续谈流程目前只演示「每日路线草案」，请先选择它；不会把当前文档的问题误发给另一份文档。&#x27;;return}r.querySelector(&#x27;nav [data-page=&quot;continue&quot;]&#x27;).click()});
+const arch=r.querySelector(&#x27;section.architecture&#x27;);if(arch){const det=document.createElement(&#x27;details&#x27;);det.className=&#x27;architecture&#x27;;const title=document.createElement(&#x27;summary&#x27;);title.textContent=&#x27;想了解背后怎么连接？展开系统架构&#x27;;det.append(title);while(arch.firstChild)det.append(arch.firstChild);arch.replaceWith(det)}
+}
+if(document.readyState===&#x27;loading&#x27;)document.addEventListener(&#x27;DOMContentLoaded&#x27;,whRealInit);else whRealInit();
+&lt;/script&gt;
 &lt;/div&gt;
 &lt;div aria-live=&quot;polite&quot; aria-atomic=&quot;true&quot;&gt;
 &lt;div class=&quot;walk-columns&quot;&gt;&lt;div&gt;&lt;h3&gt;你做什么&lt;/h3&gt;&lt;p id=&quot;wh-explain-user&quot;&gt;选择一件想继续的工作，比如这份家庭旅行计划。&lt;/p&gt;&lt;/div&gt;&lt;div&gt;&lt;h3&gt;系统呈现什么&lt;/h3&gt;&lt;p id=&quot;wh-explain-system&quot;&gt;把已有文档、来源会话和上次停下的问题放在一起，不需要你翻找多段聊天。&lt;/p&gt;&lt;/div&gt;&lt;div&gt;&lt;h3&gt;这一步留下什么&lt;/h3&gt;&lt;p id=&quot;wh-explain-outcome&quot;&gt;一个明确的工作入口：知道先看哪份成果、接着想哪个问题。&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;

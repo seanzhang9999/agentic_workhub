@@ -38,6 +38,39 @@
 <button data-explain="home" aria-current="step">1 找到工作</button>
 <button data-explain="doc">2 想起背景</button>
 <button data-explain="continue">3 带着问题继续</button>
+<style>
+#wh-personal .realspace{display:grid;grid-template-columns:185px minmax(0,1fr);gap:18px;margin-top:24px;align-items:start}
+#wh-personal .real-tree{padding:18px 12px;background:var(--wh-paper);border:1px solid var(--wh-line);border-radius:12px}
+#wh-personal .real-tree button{display:block;text-align:left;width:100%;border:0;background:transparent;font-size:13px;padding:12px 10px;margin:3px 0;line-height:1.5}
+#wh-personal .real-tree button[aria-pressed="true"]{background:var(--wh-soft);color:var(--wh-accent)}
+#wh-personal .branch{margin-left:8px;border-left:1px solid var(--wh-line);padding-left:5px}
+#wh-personal .real-paper{background:var(--wh-paper);padding:24px;border:1px solid var(--wh-line);border-radius:12px;box-shadow:0 6px 20px color-mix(in srgb,var(--wh-ink) 5%,transparent)}
+#wh-personal .real-source{margin:18px 0 0;padding:17px;border:1px solid var(--wh-line);border-radius:12px;background:var(--wh-soft)}
+#wh-personal .paper-rule{height:5px;border-radius:5px;background:var(--wh-line);margin:11px 0;width:80%;opacity:.6}
+#wh-personal .real-steps{display:flex;gap:9px;flex-wrap:wrap;font-size:12px;color:var(--wh-muted);margin:16px 0}
+#wh-personal .real-entry{font-size:13px;margin-top:16px}#wh-personal .real-source p{font-size:13px;margin:7px 0}
+#wh-personal .real-counts{display:flex;gap:18px;flex-wrap:wrap;font-size:12px;color:var(--wh-muted);margin:14px 0}
+#wh-personal .real-counts b{font-size:18px;font-weight:500;color:var(--wh-ink);margin-right:4px}
+#wh-personal details.architecture>summary{cursor:pointer;font-size:17px;font-weight:500;padding:4px 0}
+@media(max-width:620px){#wh-personal .realspace{grid-template-columns:1fr}#wh-personal .real-paper{padding:18px}#wh-personal .real-tree{padding:12px}}
+</style>
+<script>
+function whRealInit(){
+const r=document.getElementById('wh-personal');const home=r.querySelector('[data-screen="home"]');
+home.innerHTML=`<div class="eyebrow">我的文档空间 / 示例数据</div><h1 id="wh-greeting">文档有位置，讨论有来历。</h1><p class="muted">不再找“我在哪聊过”。从正在做的事情开始。</p><div class="real-counts"><span><b>1</b>工作项目</span><span><b>3</b>子文档</span><span><b>2</b>已登记会话</span><span>演示范围 · 不是账户实际数量</span></div>
+<div class="realspace"><div class="real-tree"><h3>▤ 家庭旅行</h3><div class="meta">工作空间 / 3 篇原文</div><div class="branch"><button data-real-doc="route" aria-pressed="true">▤ 每日路线草案</button><button data-real-doc="stay" aria-pressed="false">▤ 住宿选择与取舍</button><button data-real-doc="traffic" aria-pressed="false">▤ 交通待确认清单</button></div><div class="line sub">文档仍保存在飞书<br>这里组织它们的关系</div></div>
+<div><div class="real-paper"><div class="flex spread"><span class="tag">原文预览 · 演示</span><span class="sub">家庭旅行 / 子页面</span></div><h2 id="real-title" style="margin-top:20px">每日路线草案</h2><p id="real-purpose" class="muted">目标：让一家人轻松出行，不追求景点数量。</p><div class="real-steps"><span>已讨论</span><span>→</span><span>已有草案</span><span>→</span><span>还有一个决定</span></div><h3>已经确定</h3><p id="real-decisions">全程住在同一区域，每天只安排一个主要目的地，午后留出休息时间。</p><div class="paper-rule" aria-hidden="true"></div><div class="paper-rule" style="width:57%" aria-hidden="true"></div><blockquote id="real-question">第三天是否保留岚山？担心交通与步行让家人太累。</blockquote><button class="primary" id="real-open">打开文档与背景 →</button></div>
+<div style="text-align:center;font-size:12px;color:var(--wh-muted);padding-top:13px">↑ 这份成果，来自下面的讨论</div><div class="real-source"><div class="flex spread"><h3 id="real-session">一家人的秋日旅行</h3><span class="tag">会话自述</span></div><p id="real-summary">我们讨论过家人的节奏和住宿位置。路线已成形，下一步是减少第三天的负担。</p><div class="meta" id="real-platform">ChatGPT · 已登记背景，不代表当前正在运行</div><button id="real-context">看看这个上下文</button><div id="real-context-detail" hidden class="line"><p>来源：会话自述（演示）</p><p id="real-next">下一步：比较保留岚山与留在市区两个方案。</p><p>会话标识和时间在此省略；正式页面显示可核实信息。</p><button id="real-resume">选择上下文，接着讨论 →</button></div></div></div></div>`;
+const data={route:['每日路线草案','让一家人轻松出行，不追求景点数量。','全程住在同一区域，每天只安排一个主要目的地，午后留出休息时间。','第三天是否保留岚山？担心交通与步行让家人太累。','一家人的秋日旅行','我们讨论过家人的节奏和住宿位置。路线已成形，下一步是减少第三天的负担。','比较保留岚山与留在市区两个方案。'],stay:['住宿选择与取舍','少搬行李，让每天出门与返回都轻松。','先固定一个住宿区域，再围绕酒店安排行程；不为了景点每天换酒店。','应该优先靠近车站，还是选安静的小街区？','一家人的秋日旅行','这份住宿决定和路线出自同一个讨论，上下文可以一起保留。','比较交通方便与夜间安静的取舍。'],traffic:['交通待确认清单','把不确定的交通问题提前弄清楚。','交通安排服从家人的节奏，不为了使用某张通票额外绕路。','岚山当天往返怎样更省力？还没有核实具体时刻。','出行前的交通核对','这是另一个已登记的讨论，集中处理交通疑问，不重复改写整个计划。','核实可行路线，再把结果补回计划。']};let selected='route';
+function select(k){selected=k;const d=data[k];['title','purpose','decisions','question','session','summary','next'].forEach((x,i)=>r.querySelector('#real-'+x).textContent=(x==='purpose'?'目标：':x==='next'?'下一步：':'')+d[i]);r.querySelectorAll('[data-real-doc]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.realDoc===k)));r.querySelector('#real-open').textContent=k==='route'?'打开文档与背景 →':'查看这份文档的来历 ↓';r.querySelector('#real-context-detail').hidden=true}
+r.querySelectorAll('[data-real-doc]').forEach(b=>b.addEventListener('click',()=>select(b.dataset.realDoc)));
+r.querySelector('#real-open').addEventListener('click',()=>{if(selected==='route')r.querySelector('nav [data-page="doc"]').click();else r.querySelector('#real-context-detail').hidden=false});
+r.querySelector('#real-context').addEventListener('click',()=>{const d=r.querySelector('#real-context-detail');d.hidden=!d.hidden});
+r.querySelector('#real-resume').addEventListener('click',()=>{if(selected!=='route'){r.querySelector('#real-next').textContent='演示边界：完整续谈流程目前只演示「每日路线草案」，请先选择它；不会把当前文档的问题误发给另一份文档。';return}r.querySelector('nav [data-page="continue"]').click()});
+const arch=r.querySelector('section.architecture');if(arch){const det=document.createElement('details');det.className='architecture';const title=document.createElement('summary');title.textContent='想了解背后怎么连接？展开系统架构';det.append(title);while(arch.firstChild)det.append(arch.firstChild);arch.replaceWith(det)}
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',whRealInit);else whRealInit();
+</script>
 </div>
 <div aria-live="polite" aria-atomic="true">
 <div class="walk-columns"><div><h3>你做什么</h3><p id="wh-explain-user">选择一件想继续的工作，比如这份家庭旅行计划。</p></div><div><h3>系统呈现什么</h3><p id="wh-explain-system">把已有文档、来源会话和上次停下的问题放在一起，不需要你翻找多段聊天。</p></div><div><h3>这一步留下什么</h3><p id="wh-explain-outcome">一个明确的工作入口：知道先看哪份成果、接着想哪个问题。</p></div></div>
