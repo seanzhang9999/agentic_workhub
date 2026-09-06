@@ -44,6 +44,37 @@
 <p id="wh-explain-limit" class="walk-limit">当前演示：静态示例，不读取你的账号。正式使用时，只展示已登记且在授权范围内的工作，不保证自动发现全部会话。</p>
 </div>
 </section>
+<section class="architecture" aria-labelledby="wh-architecture-title">
+<style>
+#wh-personal .architecture{padding:30px;border-top:1px solid var(--wh-line);background:var(--wh-bg)}
+#wh-personal .arch-cloud,#wh-personal .arch-local,#wh-personal .arch-feishu{padding:18px;margin-top:15px;border:1px solid var(--wh-line);border-radius:12px;background:var(--wh-paper)}
+#wh-personal .arch-local{border:2px solid var(--wh-accent)}
+#wh-personal .arch-flow{display:grid;grid-template-columns:minmax(0,1fr) 42px minmax(0,1fr) 42px minmax(0,1fr);align-items:center;gap:8px;margin-top:12px}
+#wh-personal .arch-node{padding:16px;background:var(--wh-soft);border-radius:8px;min-width:0}
+#wh-personal .arch-node strong{display:block;font-weight:600;font-size:14px}
+#wh-personal .arch-node small{display:block;margin-top:6px;color:var(--wh-muted);font-size:12px;overflow-wrap:anywhere}
+#wh-personal .arch-arrow{text-align:center;color:var(--wh-accent);font-size:22px}
+#wh-personal .arch-boundary{text-align:center;font-size:13px;color:var(--wh-muted);padding:12px 10px 0}
+#wh-personal .arch-legend{font-size:13px;margin:14px 0 0}
+#wh-personal .arch-rule{border-top:1px solid var(--wh-line);margin-top:18px;padding-top:16px}
+#wh-personal .arch-lines{font-size:13px;line-height:1.9;margin:10px 0 0;padding-left:20px}
+@media(max-width:650px){#wh-personal .architecture{padding:24px 16px}#wh-personal .arch-flow{grid-template-columns:1fr}#wh-personal .arch-arrow{transform:rotate(90deg);line-height:1}#wh-personal .arch-cloud,#wh-personal .arch-local,#wh-personal .arch-feishu{padding:14px}}
+</style>
+<div class="eyebrow">系统架构 / 现在是怎样连接的</div>
+<h2 id="wh-architecture-title" style="margin-top:8px">Agent 走私有工具通道，你走本地网页。</h2>
+<p class="muted">下面描述现有 Mac 部署，不是本 GitHub Pages 演示页的后台。箭头表示业务请求方向，结果沿原链路返回。</p>
+<div class="arch-cloud"><span class="tag">云端 · Agent 与私有中转</span>
+<div class="arch-flow"><div class="arch-node"><strong>Agent 会话</strong><small>例如 ChatGPT 中已连接插件的会话<br>决定调用哪个工具、传什么参数</small></div><div class="arch-arrow" aria-label="调用">→</div><div class="arch-node"><strong>MCP 客户端 / 插件</strong><small>把模型的工具请求发到已配置的连接<br>不是每个会话天然都有工具</small></div><div class="arch-arrow" aria-label="私有转发">→</div><div class="arch-node"><strong>MCP 中间代理</strong><small>本方案指 Secure MCP Tunnel 云端中转<br>传递请求，不执行飞书 CLI</small></div></div></div>
+<div class="arch-boundary">↓ 请求通过已建立的私有通道进入 Mac<br>连接由 Mac 的 tunnel-client 主动向外建立，不开放 8787 公网入站</div>
+<div class="arch-local"><div class="flex spread"><span class="tag">你的 Mac · 本机运行边界</span><span class="sub">由独立 LaunchAgent 托管</span></div>
+<div class="arch-flow"><div class="arch-node"><strong>Tunnel 本地客户端</strong><small>接收隧道中的请求<br>转发到本机 MCP Gateway</small></div><div class="arch-arrow" aria-label="转发">→</div><div class="arch-node"><strong>本地 MCP Gateway</strong><small>127.0.0.1:8787<br>工具定义、授权根校验<br>写入版本检查与操作回执</small></div><div class="arch-arrow" aria-label="启动子进程">→</div><div class="arch-node"><strong>飞书 CLI · lark-cli</strong><small>Gateway 启动本机命令进程<br>使用已有飞书 user 授权<br>实际执行文档查询与读写</small></div></div>
+<div class="arch-rule"><h3>另一条入口：你在 Mac 浏览器中打开工作空间</h3>
+<div class="arch-flow"><div class="arch-node"><strong>用户的 Mac 浏览器</strong><small>查看文档和背景<br>选择会话、准备讨论指示</small></div><div class="arch-arrow" aria-label="本地访问">→</div><div class="arch-node"><strong>独立本地 Web 服务</strong><small>127.0.0.1:8788<br>/space · /r/文档 · /collect<br>Host、Origin 与会话保护</small></div><div class="arch-arrow" aria-label="复用逻辑并调用">→</div><div class="arch-node"><strong>范围校验 + CLI 适配</strong><small>Web 自己调用本机 lark-cli<br>复用范围校验代码<br>不是把所有请求转发给 8787</small></div></div>
+<p class="arch-legend">共享工作信息：MCP 与 Web 使用本地会话登记库；Web 另有文档背景与采集队列。数据留在本机，不随演示站发布。</p></div></div>
+<div class="arch-boundary">↓ CLI 通过飞书官方 API 访问原始文档<br>浏览器的 Docs Component 另行连接飞书，使用独立网页授权</div>
+<div class="arch-feishu"><span class="tag">飞书云端 · 原文与权限</span><h3 style="margin-top:12px">文档仍在飞书，业务权限最终由飞书执行</h3><p class="muted">CLI 工具链用于 Agent 查询和读写；Docs Component 用于用户在本地网页查看、编辑原文。CLI 登录不等于网页组件登录，不能把 CLI 的通用令牌交给浏览器。</p></div>
+<ul class="arch-lines"><li><strong>本地 Web 不经过现有 Tunnel：</strong>8788 没有被这个 MCP 通道公开，云端 Agent 不能把 localhost 链接当远程读取地址。</li><li><strong>会话采集不是“网页自动控制 Agent”：</strong>网页登记队列，由固定 Codex 协调会话使用平台原生能力发送和回收；入队不等于已发送。</li><li><strong>ANP 不在这条已部署链路中：</strong>它是未来跨系统身份与通信的候选能力，不能与当前 Tunnel 混为一谈。</li><li><strong>这张图和当前演示页不连后端：</strong>GitHub Pages 只展示产品体验和架构说明，不公开本地 MCP、飞书授权或私人内容。</li></ul>
+</section>
 <footer><span>AWiki · 工作属于你，Agent 帮你继续。</span><span>本次只演示界面，不连接账号、不发送消息</span></footer>
 <script>
 (()=>{const root=document.getElementById('wh-personal');let context='original';const state={tone:'sage',density:'relaxed',headline:'continuity'};function show(page){root.querySelectorAll('[data-screen]').forEach(el=>el.hidden=el.dataset.screen!==page);root.querySelectorAll('nav [data-page]').forEach(el=>{if(el.dataset.page===page)el.setAttribute('aria-current','page');else el.removeAttribute('aria-current')});root.querySelector('#wh-status').textContent=''}root.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',()=>show(b.dataset.page)));root.querySelector('[data-action="quote"]').addEventListener('click',()=>show('continue'));root.querySelector('[data-action="original"]').addEventListener('click',()=>{root.querySelector('[data-original-note]').hidden=false});root.querySelectorAll('[data-context]').forEach(b=>b.addEventListener('click',()=>{context=b.dataset.context;root.querySelectorAll('[data-context]').forEach(x=>{x.setAttribute('aria-pressed',String(x===b));x.firstChild.textContent=(x===b?'◉ ':'○ ')+(x.dataset.context==='original'?'回到原会话':'交给一个新会话')});root.querySelector('#wh-handoff').hidden=true}));root.querySelector('[data-action="prepare"]').addEventListener('click',()=>{const q=root.querySelector('#wh-question').value.trim();if(!q){root.querySelector('#wh-status').textContent='请先写下这次想讨论的问题。';return}root.querySelector('#wh-status').textContent='';root.querySelector('#wh-handoff').hidden=false;root.querySelector('#wh-target').textContent=context==='original'?'目标：原会话「一家人的秋日旅行」':'目标：新会话，附带已有背景';root.querySelector('#wh-prompt').textContent='【演示指示 · 不含真实资源地址】\n请先读取「秋天，带家人去京都 / 每日路线草案」的最新内容。\n已有决定：住同一区域，每天一个主要目的地，午后休息。\n关注片段：第三天岚山与寺院安排可能过于紧凑。\n我的补充：'+q+'\n先比较方案并说明取舍，本次不要修改原文。'});root.querySelector('#wh-question').addEventListener('input',()=>root.querySelector('#wh-handoff').hidden=true);function render(){root.dataset.tone=state.tone;root.dataset.density=state.density;root.querySelector('#wh-greeting').textContent=state.headline==='continuity'?'回来就能接着做。':'你的想法，有了自己的地方。'}render();if(globalThis.Tweak){const t=new Tweak({container:root,onChange:render});t.addSelect(state,'tone',{label:'界面气质',options:[{label:'温和鼠尾草绿',value:'sage'},{label:'冷静雾蓝',value:'blue'}]});t.addSelect(state,'density',{label:'信息密度',options:[{label:'舒展',value:'relaxed'},{label:'紧凑',value:'compact'}]});t.addSelect(state,'headline',{label:'首页主张',options:[{label:'工作连续性',value:'continuity'},{label:'个人空间感',value:'belonging'}]})}})();
