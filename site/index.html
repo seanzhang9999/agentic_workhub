@@ -1056,9 +1056,51 @@ html&gt;body{padding:0}&lt;/style&gt;
 &lt;/section&gt;
 &lt;section data-screen=&quot;continue&quot; hidden&gt;&lt;div class=&quot;eyebrow&quot;&gt;接得上 / CONTINUE WITH CONTEXT&lt;/div&gt;&lt;h1&gt;这一次，不从头解释。&lt;/h1&gt;&lt;p class=&quot;muted&quot;&gt;带上原文、已有结论和你的新问题，再选择在哪里继续。&lt;/p&gt;&lt;div class=&quot;notice&quot;&gt;正在接续：秋天，带家人去京都 / 每日路线草案&lt;br&gt;引用：上午去岚山，下午再安排两座寺院。担心家人会累。&lt;/div&gt;&lt;label for=&quot;wh-question&quot;&gt;你现在想补充什么？&lt;/label&gt;&lt;textarea id=&quot;wh-question&quot;&gt;第三天想轻松一点。请结合前面的安排，比较保留岚山和留在市区这两个选择。&lt;/textarea&gt;&lt;h3&gt;选择一个讨论上下文&lt;/h3&gt;&lt;div class=&quot;choices&quot;&gt;&lt;button class=&quot;choice&quot; data-context=&quot;original&quot; aria-pressed=&quot;true&quot;&gt;◉ 回到原会话&lt;span&gt;一家人的秋日旅行 · ChatGPT&lt;/span&gt;&lt;span&gt;已讨论过家人的节奏和住宿取舍。&lt;/span&gt;&lt;/button&gt;&lt;button class=&quot;choice&quot; data-context=&quot;new&quot; aria-pressed=&quot;false&quot;&gt;○ 交给一个新会话&lt;span&gt;携带这份工作的背景摘要&lt;/span&gt;&lt;span&gt;换一个视角，也不丢掉已有决定。&lt;/span&gt;&lt;/button&gt;&lt;/div&gt;&lt;div class=&quot;flex spread&quot;&gt;&lt;span class=&quot;muted&quot; style=&quot;font-size:13px&quot;&gt;本次先读取和讨论，不修改原文&lt;/span&gt;&lt;button class=&quot;primary&quot; data-action=&quot;prepare&quot;&gt;准备继续讨论 →&lt;/button&gt;&lt;/div&gt;&lt;div id=&quot;wh-handoff&quot; hidden&gt;&lt;div class=&quot;notice&quot;&gt;&lt;h3&gt;讨论指示已准备好&lt;/h3&gt;&lt;span id=&quot;wh-target&quot;&gt;&lt;/span&gt;&lt;br&gt;尚未发送给任何 Agent。演示只生成预览。&lt;/div&gt;&lt;div class=&quot;result&quot; id=&quot;wh-prompt&quot;&gt;&lt;/div&gt;&lt;p class=&quot;meta&quot;&gt;正式版本可采用复制或已验证的平台交接入口。发送、回复和成果登记将分别显示状态。&lt;/p&gt;&lt;button data-page=&quot;doc&quot;&gt;返回文档与背景&lt;/button&gt;&lt;/div&gt;&lt;/section&gt;
 &lt;div aria-live=&quot;polite&quot; id=&quot;wh-status&quot; class=&quot;meta&quot;&gt;&lt;/div&gt;
-&lt;/main&gt;&lt;/div&gt;&lt;footer&gt;&lt;span&gt;AWiki · 工作属于你，Agent 帮你继续。&lt;/span&gt;&lt;span&gt;本次只演示界面，不连接账号、不发送消息&lt;/span&gt;&lt;/footer&gt;
+&lt;/main&gt;&lt;/div&gt;
+&lt;section class=&quot;walkthrough&quot; aria-labelledby=&quot;wh-explain-title&quot;&gt;
+&lt;style&gt;
+#wh-personal .walkthrough{padding:26px 30px;background:var(--wh-paper);border-top:1px solid var(--wh-line)}
+#wh-personal .walk-steps{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 22px}
+#wh-personal .walk-steps button{font-size:13px;padding:8px 12px}
+#wh-personal .walk-steps button[aria-current=&quot;step&quot;]{background:var(--wh-accent);color:var(--wh-on);border-color:var(--wh-accent)}
+#wh-personal .walk-columns{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+#wh-personal .walk-columns h3{font-size:12px;color:var(--wh-accent);letter-spacing:1px}
+#wh-personal .walk-columns p{margin:8px 0;font-size:14px}
+#wh-personal .walk-limit{font-size:12px;color:var(--wh-muted);padding-top:14px;margin-top:16px;border-top:1px solid var(--wh-line)}
+@media(max-width:560px){#wh-personal .walkthrough{padding:24px 16px}#wh-personal .walk-columns{grid-template-columns:1fr;gap:14px}}
+&lt;/style&gt;
+&lt;span class=&quot;eyebrow&quot;&gt;跟着体验 / 每一步发生什么&lt;/span&gt;
+&lt;h2 id=&quot;wh-explain-title&quot; style=&quot;margin-top:8px&quot;&gt;第一步：先找到你正在做的事&lt;/h2&gt;
+&lt;div class=&quot;walk-steps&quot; aria-label=&quot;体验步骤&quot;&gt;
+&lt;button data-explain=&quot;home&quot; aria-current=&quot;step&quot;&gt;1 找到工作&lt;/button&gt;
+&lt;button data-explain=&quot;doc&quot;&gt;2 想起背景&lt;/button&gt;
+&lt;button data-explain=&quot;continue&quot;&gt;3 带着问题继续&lt;/button&gt;
+&lt;/div&gt;
+&lt;div aria-live=&quot;polite&quot; aria-atomic=&quot;true&quot;&gt;
+&lt;div class=&quot;walk-columns&quot;&gt;&lt;div&gt;&lt;h3&gt;你做什么&lt;/h3&gt;&lt;p id=&quot;wh-explain-user&quot;&gt;选择一件想继续的工作，比如这份家庭旅行计划。&lt;/p&gt;&lt;/div&gt;&lt;div&gt;&lt;h3&gt;系统呈现什么&lt;/h3&gt;&lt;p id=&quot;wh-explain-system&quot;&gt;把已有文档、来源会话和上次停下的问题放在一起，不需要你翻找多段聊天。&lt;/p&gt;&lt;/div&gt;&lt;div&gt;&lt;h3&gt;这一步留下什么&lt;/h3&gt;&lt;p id=&quot;wh-explain-outcome&quot;&gt;一个明确的工作入口：知道先看哪份成果、接着想哪个问题。&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p id=&quot;wh-explain-limit&quot; class=&quot;walk-limit&quot;&gt;当前演示：静态示例，不读取你的账号。正式使用时，只展示已登记且在授权范围内的工作，不保证自动发现全部会话。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/section&gt;
+&lt;footer&gt;&lt;span&gt;AWiki · 工作属于你，Agent 帮你继续。&lt;/span&gt;&lt;span&gt;本次只演示界面，不连接账号、不发送消息&lt;/span&gt;&lt;/footer&gt;
 &lt;script&gt;
 (()=&gt;{const root=document.getElementById(&#x27;wh-personal&#x27;);let context=&#x27;original&#x27;;const state={tone:&#x27;sage&#x27;,density:&#x27;relaxed&#x27;,headline:&#x27;continuity&#x27;};function show(page){root.querySelectorAll(&#x27;[data-screen]&#x27;).forEach(el=&gt;el.hidden=el.dataset.screen!==page);root.querySelectorAll(&#x27;nav [data-page]&#x27;).forEach(el=&gt;{if(el.dataset.page===page)el.setAttribute(&#x27;aria-current&#x27;,&#x27;page&#x27;);else el.removeAttribute(&#x27;aria-current&#x27;)});root.querySelector(&#x27;#wh-status&#x27;).textContent=&#x27;&#x27;}root.querySelectorAll(&#x27;[data-page]&#x27;).forEach(b=&gt;b.addEventListener(&#x27;click&#x27;,()=&gt;show(b.dataset.page)));root.querySelector(&#x27;[data-action=&quot;quote&quot;]&#x27;).addEventListener(&#x27;click&#x27;,()=&gt;show(&#x27;continue&#x27;));root.querySelector(&#x27;[data-action=&quot;original&quot;]&#x27;).addEventListener(&#x27;click&#x27;,()=&gt;{root.querySelector(&#x27;[data-original-note]&#x27;).hidden=false});root.querySelectorAll(&#x27;[data-context]&#x27;).forEach(b=&gt;b.addEventListener(&#x27;click&#x27;,()=&gt;{context=b.dataset.context;root.querySelectorAll(&#x27;[data-context]&#x27;).forEach(x=&gt;{x.setAttribute(&#x27;aria-pressed&#x27;,String(x===b));x.firstChild.textContent=(x===b?&#x27;◉ &#x27;:&#x27;○ &#x27;)+(x.dataset.context===&#x27;original&#x27;?&#x27;回到原会话&#x27;:&#x27;交给一个新会话&#x27;)});root.querySelector(&#x27;#wh-handoff&#x27;).hidden=true}));root.querySelector(&#x27;[data-action=&quot;prepare&quot;]&#x27;).addEventListener(&#x27;click&#x27;,()=&gt;{const q=root.querySelector(&#x27;#wh-question&#x27;).value.trim();if(!q){root.querySelector(&#x27;#wh-status&#x27;).textContent=&#x27;请先写下这次想讨论的问题。&#x27;;return}root.querySelector(&#x27;#wh-status&#x27;).textContent=&#x27;&#x27;;root.querySelector(&#x27;#wh-handoff&#x27;).hidden=false;root.querySelector(&#x27;#wh-target&#x27;).textContent=context===&#x27;original&#x27;?&#x27;目标：原会话「一家人的秋日旅行」&#x27;:&#x27;目标：新会话，附带已有背景&#x27;;root.querySelector(&#x27;#wh-prompt&#x27;).textContent=&#x27;【演示指示 · 不含真实资源地址】\n请先读取「秋天，带家人去京都 / 每日路线草案」的最新内容。\n已有决定：住同一区域，每天一个主要目的地，午后休息。\n关注片段：第三天岚山与寺院安排可能过于紧凑。\n我的补充：&#x27;+q+&#x27;\n先比较方案并说明取舍，本次不要修改原文。&#x27;});root.querySelector(&#x27;#wh-question&#x27;).addEventListener(&#x27;input&#x27;,()=&gt;root.querySelector(&#x27;#wh-handoff&#x27;).hidden=true);function render(){root.dataset.tone=state.tone;root.dataset.density=state.density;root.querySelector(&#x27;#wh-greeting&#x27;).textContent=state.headline===&#x27;continuity&#x27;?&#x27;回来就能接着做。&#x27;:&#x27;你的想法，有了自己的地方。&#x27;}render();if(globalThis.Tweak){const t=new Tweak({container:root,onChange:render});t.addSelect(state,&#x27;tone&#x27;,{label:&#x27;界面气质&#x27;,options:[{label:&#x27;温和鼠尾草绿&#x27;,value:&#x27;sage&#x27;},{label:&#x27;冷静雾蓝&#x27;,value:&#x27;blue&#x27;}]});t.addSelect(state,&#x27;density&#x27;,{label:&#x27;信息密度&#x27;,options:[{label:&#x27;舒展&#x27;,value:&#x27;relaxed&#x27;},{label:&#x27;紧凑&#x27;,value:&#x27;compact&#x27;}]});t.addSelect(state,&#x27;headline&#x27;,{label:&#x27;首页主张&#x27;,options:[{label:&#x27;工作连续性&#x27;,value:&#x27;continuity&#x27;},{label:&#x27;个人空间感&#x27;,value:&#x27;belonging&#x27;}]})}})();
+&lt;/script&gt;
+&lt;script&gt;
+(()=&gt;{
+ const root=document.getElementById(&#x27;wh-personal&#x27;);
+ const copy={
+ home:[&#x27;第一步：先找到你正在做的事&#x27;,&#x27;选择一件想继续的工作，比如这份家庭旅行计划。&#x27;,&#x27;把已有文档、来源会话和上次停下的问题放在一起，不需要你翻找多段聊天。&#x27;,&#x27;一个明确的工作入口：知道先看哪份成果、接着想哪个问题。&#x27;,&#x27;当前演示：静态示例，不读取你的账号。正式使用时，只展示已登记且在授权范围内的工作，不保证自动发现全部会话。&#x27;],
+ doc:[&#x27;第二步：看原文，也想起当时为什么&#x27;,&#x27;阅读计划和右侧背景，找到想推敲的一段，点击“围绕这一段，接着讨论”。&#x27;,&#x27;同时呈现原文、目标、来源会话和未决问题，帮助你保留已经做过的决定。&#x27;,&#x27;一份有来处的讨论材料：具体段落与工作背景一起进入下一步。&#x27;,&#x27;当前演示：按钮引用预置段落，不是实时飞书文档。现有本地版本的选段讨论需手动复制粘贴；不声称自动捕获飞书选区。&#x27;],
+ continue:[&#x27;第三步：把新问题放回合适的上下文&#x27;,&#x27;补充问题，选择回原会话还是交给新会话，再点击“准备继续讨论”。&#x27;,&#x27;把关注段落、已有决定和你的补充整理成明确指示，同时注明“先读取，不修改”。&#x27;,&#x27;一份可以检查的交接预览。你能看清要交给谁、讨论什么，以及允许做什么。&#x27;,&#x27;当前演示：只生成预览，不向 Agent 发送。正式交接需要复制或已验证的平台入口；选择会话并不等于消息已送达。&#x27;],
+ ready:[&#x27;准备好了：先看清，再交接&#x27;,&#x27;检查下方讨论指示；不合适就修改问题或重新选择上下文。&#x27;,&#x27;保留工作目标和引用，明确只读边界；不会把“准备好”当成“执行成功”。&#x27;,&#x27;下一步应分别确认：请求送达 → 收到回复 → 需要修改时另行批准 → 回读验收并关联成果。&#x27;,&#x27;本演示到此为止：没有发送、回复或写入。将来的成果关联与续接闭环是设计方向，不能据此认定全部自动化已实现。&#x27;]};
+ function explain(key){const d=copy[key];[&#x27;title&#x27;,&#x27;user&#x27;,&#x27;system&#x27;,&#x27;outcome&#x27;,&#x27;limit&#x27;].forEach((x,i)=&gt;root.querySelector(&#x27;#wh-explain-&#x27;+x).textContent=d[i]);root.querySelectorAll(&#x27;[data-explain]&#x27;).forEach(b=&gt;{if(b.dataset.explain===(key===&#x27;ready&#x27;?&#x27;continue&#x27;:key))b.setAttribute(&#x27;aria-current&#x27;,&#x27;step&#x27;);else b.removeAttribute(&#x27;aria-current&#x27;)})}
+ root.querySelectorAll(&#x27;[data-page]&#x27;).forEach(b=&gt;b.addEventListener(&#x27;click&#x27;,()=&gt;explain(b.dataset.page)));
+ root.querySelector(&#x27;[data-action=&quot;quote&quot;]&#x27;).addEventListener(&#x27;click&#x27;,()=&gt;explain(&#x27;continue&#x27;));
+ root.querySelectorAll(&#x27;[data-explain]&#x27;).forEach(b=&gt;b.addEventListener(&#x27;click&#x27;,()=&gt;root.querySelector(&#x27;nav [data-page=&quot;&#x27;+b.dataset.explain+&#x27;&quot;]&#x27;).click()));
+ root.querySelector(&#x27;[data-action=&quot;prepare&quot;]&#x27;).addEventListener(&#x27;click&#x27;,()=&gt;{if(root.querySelector(&#x27;#wh-question&#x27;).value.trim())explain(&#x27;ready&#x27;)});
+ root.querySelectorAll(&#x27;[data-context]&#x27;).forEach(b=&gt;b.addEventListener(&#x27;click&#x27;,()=&gt;explain(&#x27;continue&#x27;)));
+ root.querySelector(&#x27;#wh-question&#x27;).addEventListener(&#x27;input&#x27;,()=&gt;explain(&#x27;continue&#x27;));
+})();
 &lt;/script&gt;
 &lt;/div&gt;
 
