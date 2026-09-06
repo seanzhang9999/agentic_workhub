@@ -1,0 +1,20 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {mkdtemp,rm,stat} from 'node:fs/promises';import {tmpdir} from 'node:os';import {join} from 'node:path';
+import {ControlStore,ControlService} from '../src/control.js';import {GatewayError} from '../src/errors.js';
+test('control registry is separate, scope checked, idempotent, conflict safe and contains no dispatcher',async t=>{
+  const dir=await mkdtemp(join(tmpdir(),'awiki-control-test-')),file=join(dir,'registry.sqlite'),store=new ControlStore(file);t.after(async()=>{store.db.close();await rm(dir,{recursive:true,force:true});});
+  let allowed=true;const guard={resolveAllowed:async ref=>{if(ref!=='allowed123'||!allowed)throw new GatewayError('OUT_OF_SCOPE','test');}};
+  const service=new ControlService(store,guard),input={context_id:'registration-test',expected_revision:0,provider:'unknown',native_session_id:null,session_url:null,title:'测试卡',agent_label:'test',identity_basis:'test fixture only',summary:'test',goal:'test',decisions:'',open_questions:'',next_step:'',document_refs:['allowed123']};
+  const r=await service.register(input);assert.equal(r.context.revision,1);assert.equal(r.context.native_session_id,null);assert.equal((await stat(file)).mode&0o777,0o600);
+  assert.equal((await service.register(input)).context.idempotent_replay,true);
+  await assert.rejects(()=>service.register({...input,goal:'changed'}),/Read the latest/);
+  await assert.rejects(()=>service.register({...input,expected_revision:1,document_refs:['outside123']}),e=>e.code==='OUT_OF_SCOPE');
+  await assert.rejects(()=>service.register({...input,session_url:'https://evil.test'}),e=>e.code==='CONTEXT_URL_INVALID');
+  await assert.rejects(()=>service.register({...input,summary:'access_token=abc'}),e=>e.code==='CONTEXT_SECRET_REJECTED');
+  const timing={started_at:'2026-08-01T00:00:00.000Z',last_turn_started_at:'2026-08-02T00:00:00.000Z',last_turn_completed_at:'2026-08-02T00:01:00.000Z',last_turn_id:'business-turn',excluded_collection_turn_ids:['collection-turn'],source:'test platform metadata'};
+  await service.register({...input,expected_revision:1,conversation_timing:timing});
+  const updated=await service.register({...input,expected_revision:2,goal:'new description'});
+  assert.deepEqual(updated.context.conversation_timing,timing);
+  assert.notEqual(updated.context.updated_at,timing.last_turn_completed_at);
+  assert.equal((await service.list()).contexts.length,1);allowed=false;assert.equal((await service.list()).contexts.length,0);await assert.rejects(()=>service.read({context_id:input.context_id}),e=>e.code==='OUT_OF_SCOPE');
+});

@@ -1,0 +1,21 @@
+services:
+  gateway:
+    build: .
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      - lark_config:/data/lark-cli
+      - gateway_data:/data/gateway
+    ports:
+      - "127.0.0.1:8787:8787"
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    read_only: true
+    tmpfs:
+      - /tmp:size=32m,mode=1777
+      - /app/tmp:size=32m,mode=700
+volumes:
+  lark_config:
+  gateway_data:

@@ -1,0 +1,12 @@
+import { loadConfig } from "./config.js";
+import { LarkCli } from "./cli.js";
+import { ScopeGuard } from "./scope.js";
+import { ReceiptStore } from "./receipts.js";
+import { GatewayService } from "./service.js";
+import { makeApp } from "./server.js";
+import {ControlStore,ControlService} from './control.js';
+import {dirname,join} from 'node:path';
+const config=loadConfig(),cli=new LarkCli(config),guard=new ScopeGuard(cli,config),receipts=new ReceiptStore(config.receiptDbPath),service=new GatewayService(cli,guard,receipts,config);
+service.control=new ControlService(new ControlStore(join(dirname(config.receiptDbPath),'context-registry.sqlite')),guard);
+const app=makeApp(service);
+app.listen(config.port,config.host,()=>console.log(JSON.stringify({event:"gateway_started",host:config.host,port:config.port})));

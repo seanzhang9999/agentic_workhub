@@ -1,0 +1,9 @@
+(() => {
+const $=s=>document.querySelector(s),status=$('#collection-status');
+const labels={queued:'已入队 · 待协调端核对',prepared:'已定位 · 待发送',dispatch_uncertain:'已记录发送意图 · 先核对原会话，禁止自动重发',awaiting_reply:'已发送 · 等待回复',awaiting_sync:'等待同步 · 不代表失败',reported:'已收到自述 · 待登记',registered:'已登记并回读验证'};
+const el=(t,v)=>{const n=document.createElement(t);n.textContent=v;return n;};
+async function refresh(){try{const r=await fetch('/api/collections');if(!r.ok)throw Error();const data=await r.json();const box=$('#collection-jobs');box.replaceChildren();for(const j of data.jobs){const card=el('article','');card.className='doc-card';card.append(el('h2',j.before?.title||'待核对的原会话'),el('p',labels[j.status]||'未知状态'),el('p','原会话：'+j.target_id),el('p','采集编号：'+j.request_id),el('p','协调端：'+j.coordinator_id));if(j.report)card.append(el('p',j.report.summary));if(j.context_id){const a=el('a','查看已登记的会话卡');a.href='/space#context-'+j.context_id;card.append(a);}box.append(card);}if(!data.jobs.length)box.append(el('p','暂无采集请求。已有会话登记仍保留在会话区。'));}catch{status.textContent='状态暂不可用，请刷新页面；不会自动重发。';}}
+$('#collection-form').addEventListener('submit',async e=>{e.preventDefault();const button=e.target.querySelector('button');button.disabled=true;try{const r=await fetch('/api/collections',{method:'POST',headers:{'Content-Type':'application/json','X-AWiki-CSRF':$('main').dataset.csrf},body:JSON.stringify({reference:$('#collection-ref').value})});if(!r.ok)throw Error();status.textContent='已加入队列（重复入口会复用原请求）。尚未向原会话发送；请交给固定协调端处理。';await refresh();}catch{status.textContent='入队未确认：请检查原会话链接，或刷新后重试。不接受授权链接。';}finally{button.disabled=false;}});
+$('#collection-copy').addEventListener('click',async()=>{try{await navigator.clipboard.writeText($('#collection-instruction').value);status.textContent='已复制；请在固定协调会话发送。';}catch{$('#collection-instruction').select();status.textContent='请手动复制选中的指示。';}});
+$('#collection-refresh').addEventListener('click',refresh);refresh();
+})();

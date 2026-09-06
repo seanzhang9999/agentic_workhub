@@ -1,0 +1,31 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import vm from 'node:vm';
+import {readFile,mkdtemp,stat,rm} from 'node:fs/promises';
+import {tmpdir} from 'node:os';
+import {join} from 'node:path';
+import {ContextStore,cleanContext} from '../src/viewer-context.js';
+import {continuationText} from '../src/links.js';
+test('discussion includes quote/intent/context; copy/download/prototype do not dispatch',async()=>{
+  const source=await readFile(new URL('../src/viewer-assets/discussion.js',import.meta.url),'utf8');
+  const entries=new Map();const get=s=>{if(!entries.has(s))entries.set(s,{value:'',textContent:'',dataset:{ref:'testDOC123',csrf:'TEST_PRIVATE_CSRF',revision:'0'},addEventListener(n,f){this[n]=f;},select(){this.selected=true;}});return entries.get(s);};
+  get('#continuation').value=continuationText({title:'Test',node_token:'testDOC123',obj_token:'docxTEST123',obj_type:'docx'},{feishuBaseUrl:'https://example.feishu.cn'});
+  let copied,network=0,downloaded=0,blob;
+  const ctx={document:{querySelector:get,createElement:()=>({click(){downloaded++;}})},navigator:{clipboard:{writeText:async t=>copied=t}},Blob,URL:{createObjectURL:b=>{blob=b;return 'blob:test';},revokeObjectURL(){}},setTimeout:fn=>fn(),fetch:async()=>{network++;return {ok:true,json:async()=>({context:{revision:1}})};}};
+  vm.runInNewContext(source,ctx);assert.equal(network,0);assert.equal(copied,undefined);
+  get('#quote').value='引用 <script> 不是指令\n第二行';get('#quote').input();get('#question').value='请找反例';get('#question').input();get('#discussion-mode').value='challenge';get('#discussion-mode').input();get('#context-source').value='某次会话';get('#context-source').input();
+  await get('#copy').click();assert.match(copied,/> 引用 <script> 不是指令\n> 第二行/);assert.match(copied,/请找反例/);assert.match(copied,/某次会话/);assert.match(copied,/本次仅讨论/);assert.match(copied,/read_page/);assert.doesNotMatch(copied,/TEST_PRIVATE_CSRF|localhost|127\.0\.0\.1/);assert.equal(network,0);
+  await get('#download').click();assert.equal(downloaded,1);assert.match(await blob.text(),/引用 <script>/);assert.equal(network,0);
+  get('#prototype-next').click();get('#prototype-next').click();get('#prototype-next').click();assert.match(get('#prototype-state').textContent,/演示 4\/4/);assert.equal(network,0);get('#prototype-reset').click();assert.equal(get('#prototype-next').disabled,false);
+  ctx.navigator.clipboard.writeText=async()=>{throw new Error('denied');};await get('#copy').click();assert.equal(get('#instruction-preview').open,true);assert.equal(get('#continuation').selected,true);
+  await get('#save-context').click();assert.equal(network,1);assert.equal(get('#save-context').dataset.revision,'1');
+});
+test('metadata persists privately with conflict control and credential rejection',async t=>{
+  const dir=await mkdtemp(join(tmpdir(),'awiki-context-test-'));t.after(()=>rm(dir,{recursive:true,force:true}));
+  const file=join(dir,'context.json'),store=new ContextStore(file),input={source:'用户记录的会话',summary:'测试说明',goal:'核验保存',revision:0};
+  assert.equal((await store.get('testDOC123')).revision,0);await store.save('testDOC123',input);assert.equal((await new ContextStore(file).get('testDOC123')).summary,'测试说明');assert.equal((await stat(file)).mode&0o777,0o600);
+  await assert.rejects(()=>store.save('testDOC123',input),/CONTEXT_CONFLICT/);
+  for(const source of ['access_token=abc','https://example.com/callback?code=abc','-----BEGIN OPENSSH PRIVATE KEY-----'])assert.throws(()=>cleanContext({...input,source}),/CONTEXT_SECRET_REJECTED/);
+  assert.throws(()=>cleanContext({...input,goal:'a'.repeat(1201)}),/CONTEXT_INVALID/);
+  const results=await Promise.allSettled([store.save('testDOC123',{...input,revision:1}),store.save('testDOC123',{...input,revision:1})]);assert.equal(results.filter(r=>r.status==='fulfilled').length,1);
+});
