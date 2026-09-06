@@ -1,0 +1,1419 @@
+<!doctype html>
+<html lang="en" data-visualize-standalone>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src 'unsafe-inline' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>AWiki · 让工作接着发生</title>
+<style>:root{color-scheme:light dark;background:light-dark(rgb(255 255 255), rgb(24 24 24))}html,body{margin:0}body{box-sizing:border-box;padding:1rem;background:inherit}iframe{display:block;width:100%;height:calc(100vh - 2rem);margin:0 auto;border:0}</style>
+</head>
+<body>
+<iframe sandbox="allow-scripts" referrerpolicy="no-referrer" title="AWiki · 让工作接着发生" srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot; data-visualize-standalone&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot;&gt;
+&lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;default-src &#x27;none&#x27;; script-src &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27; &#x27;wasm-unsafe-eval&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src &#x27;unsafe-inline&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src &#x27;none&#x27;; object-src &#x27;none&#x27;; base-uri &#x27;none&#x27;; form-action &#x27;none&#x27;&quot;&gt;
+&lt;title&gt;AWiki · 让工作接着发生&lt;/title&gt;
+&lt;style&gt;:root {
+  color-scheme: light dark;
+  background-color: var(
+    --background,
+    var(--color-background-primary, light-dark(rgb(255 255 255), rgb(24 24 24)))
+  ) !important;
+
+  /* Agent-facing contract; keep in sync with SKILL.md. */
+  --background: var(
+    --color-background-primary,
+    light-dark(rgb(255 255 255), rgb(24 24 24))
+  );
+  --foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --card: color-mix(in oklab, var(--foreground) 5%, var(--background));
+  --card-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --popover: var(
+    --color-background-secondary,
+    light-dark(rgb(255 255 255), rgb(45 45 45))
+  );
+  --popover-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --primary: var(
+    --color-text-info,
+    light-dark(rgb(51 156 255), rgb(131 195 255))
+  );
+  --primary-foreground: var(
+    --color-text-inverse,
+    light-dark(rgb(255 255 255), rgb(13 13 13))
+  );
+  --secondary: var(
+    --color-background-secondary,
+    light-dark(rgb(255 255 255 / 96%), rgb(54 54 54 / 96%))
+  );
+  --secondary-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --muted: color-mix(in srgb, var(--foreground) 10%, transparent);
+  --muted-foreground: var(
+    --color-text-secondary,
+    light-dark(rgb(26 28 31 / 49.4%), rgb(255 255 255 / 49.8%))
+  );
+  --accent: var(
+    --color-background-info,
+    light-dark(rgb(229 242 255), rgb(13 39 63))
+  );
+  --accent-foreground: var(
+    --color-text-info,
+    light-dark(rgb(51 156 255), rgb(131 195 255))
+  );
+  --destructive: var(
+    --color-text-warning,
+    light-dark(rgb(226 85 7), rgb(255 133 73))
+  );
+  --border: var(
+    --color-border-secondary,
+    light-dark(rgb(26 28 31 / 8%), rgb(255 255 255 / 8.2%))
+  );
+  --input: var(
+    --color-border-primary,
+    light-dark(
+      rgb(26 28 31 / 11.8%),
+      color-mix(in oklab, rgb(0 0 0) 10%, transparent)
+    )
+  );
+  --ring: var(
+    --color-ring-primary,
+    light-dark(rgb(51 156 255), rgb(131 195 255 / 76%))
+  );
+  --font-size-base: var(--font-text-md-size, 14px);
+  --blue: light-dark(rgb(51 156 255), rgb(51 156 255));
+  --orange: light-dark(rgb(226 85 7), rgb(251 106 34));
+  --green: light-dark(rgb(0 162 64), rgb(64 201 119));
+  --red: light-dark(rgb(224 46 42), rgb(255 103 100));
+  --purple: light-dark(rgb(146 79 247), rgb(173 123 249));
+  --yellow: light-dark(rgb(255 195 0), rgb(255 210 64));
+  --viz-series-1: var(--primary);
+  --viz-series-2: light-dark(rgb(243 136 59), rgb(245 154 86));
+  --viz-series-3: light-dark(rgb(93 201 119), rgb(116 213 139));
+  --viz-series-4: light-dark(rgb(235 119 177), rgb(240 143 192));
+  --viz-series-5: light-dark(rgb(155 121 236), rgb(170 145 239));
+  --viz-series-6: light-dark(rgb(58 185 177), rgb(90 203 194));
+
+  /* Internal implementation variables; not part of the agent contract. */
+  --font-sans: -apple-system, system-ui, &quot;Segoe UI&quot;, sans-serif;
+  --font-mono:
+    ui-monospace, SFMono-Regular, &quot;SF Mono&quot;, Menlo, Consolas, &quot;Liberation Mono&quot;,
+    monospace;
+  --font-size-normal: max(11px, var(--font-size-base));
+  --font-size-tooltip: calc(var(--font-size-base) - 1px);
+  --font-size-small: max(11px, calc(var(--font-size-base) - 2px));
+  --font-size-h1: calc(var(--font-size-normal) * 1.7142857143);
+  --font-size-h2: calc(var(--font-size-normal) * 1.4285714286);
+  --font-size-h3: calc(var(--font-size-normal) * 1.2857142857);
+  --font-weight-normal: 430;
+  --font-weight-medium: 500;
+  --icon-size: 16px;
+  --line-height-normal: calc(var(--font-size-normal) * 1.5);
+  --line-height-tooltip: calc(var(--font-size-tooltip) * 1.4285714286);
+  --line-height-small: calc(var(--font-size-small) + 4px);
+  --corner-shape: round;
+  --radius: var(--border-radius-lg, 10px);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-2xl: calc(var(--radius) * 1.6);
+  --radius-full: 9999px;
+  --shadow-sm: 0 1px 2px -1px rgb(0 0 0 / 8%);
+  --checkmark-image: url(&quot;data:image/svg+xml,%3Csvg xmlns=&#x27;http://www.w3.org/2000/svg&#x27; viewBox=&#x27;0 0 17 17&#x27;%3E%3Cpath d=&#x27;M12.8961 3.64101C13.1297 3.41418 13.4984 3.37523 13.7779 3.56581C14.0571 3.75635 14.1554 4.11331 14.0299 4.41347L13.9615 4.53847L7.71151 13.7045C7.59411 13.8767 7.4063 13.9877 7.19881 14.0072C6.99136 14.0267 6.78564 13.9533 6.63826 13.806L2.88826 10.056L2.79842 9.9457C2.6192 9.67407 2.64927 9.30496 2.88826 9.06581C3.12738 8.82669 3.49647 8.79676 3.76815 8.97597L3.8785 9.06581L7.03084 12.2182L12.8053 3.74941L12.8961 3.64101Z&#x27;/%3E%3C/svg%3E&quot;);
+
+  /* Legacy aliases; not part of the current agent contract. */
+  --viz-bg: transparent;
+  --viz-panel: var(--card);
+  --viz-border: var(--border);
+  --viz-text: var(--foreground);
+  --viz-muted: var(--muted-foreground);
+  --viz-accent: var(--primary);
+  --viz-accent-text: var(--primary-foreground);
+  --viz-accent-bg: var(--accent);
+  --viz-font-size: var(--font-size-base);
+  --viz-warning: var(--destructive);
+}
+
+:root[data-theme=&quot;light&quot;] {
+  color-scheme: light;
+}
+
+:root[data-theme=&quot;dark&quot;] {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html &gt; body {
+  /* Preserve MCP aliases for older inline renderers without creating :root cycles. */
+  --color-background-primary: var(
+    --background,
+    light-dark(rgb(255 255 255), rgb(24 24 24))
+  );
+  --color-text-primary: var(
+    --foreground,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --color-border-secondary: var(
+    --border,
+    light-dark(rgb(26 28 31 / 8%), rgb(255 255 255 / 8.2%))
+  );
+
+  margin: 0;
+  padding: var(--visualize-paint-gutter, 0px);
+  color: var(--foreground);
+  background: transparent !important;
+  font-family: var(--font-sans) !important;
+  font-size: var(--font-size-normal);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+}
+
+a {
+  color: color-mix(in srgb, var(--viz-accent) 80%, var(--viz-text) 20%);
+  cursor: pointer;
+  font-weight: var(--font-weight-medium, 500);
+  text-decoration: none;
+  text-underline-offset: 2px;
+}
+
+a:is(:hover, :focus-visible) {
+  text-decoration-line: underline;
+  text-decoration-style: dashed;
+  text-decoration-thickness: 0.5px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-block: 0;
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.3;
+}
+
+b,
+strong,
+th {
+  font-weight: var(--font-weight-medium);
+}
+
+code:not(pre code) {
+  display: inline;
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+  corner-shape: var(--corner-shape);
+  background: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  overflow-wrap: anywhere;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  word-break: break-word;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--foreground);
+  font: inherit;
+  text-align: start;
+}
+
+.table :is(th, td) {
+  padding-block: 10px;
+  padding-inline: 0 24px;
+  overflow-wrap: anywhere;
+  border-bottom: 1px solid var(--border);
+  text-align: start;
+  vertical-align: top;
+}
+
+.table-responsive &gt; .table :is(th, td) {
+  overflow-wrap: break-word;
+}
+
+.table :is(th, td):last-child {
+  padding-inline-end: 0;
+}
+
+.table :is(caption, thead th) {
+  font-weight: 600;
+}
+
+.table thead th {
+  padding-block: 8px;
+  border-bottom-color: color-mix(in srgb, var(--foreground) 16%, transparent);
+}
+
+.table tbody tr:last-child :is(th, td) {
+  border-bottom: 0;
+}
+
+.table.table-sm :is(th, td) {
+  padding-block: 6px;
+}
+
+.table.table-sm :is(th, td):not(:last-child) {
+  padding-inline-end: 16px;
+}
+
+.table :is(.text-end, [align=&quot;right&quot;]) {
+  text-align: end;
+  font-variant-numeric: tabular-nums;
+}
+
+.table :is(.text-center, [align=&quot;center&quot;]) {
+  text-align: center;
+}
+
+.table .text-nowrap {
+  white-space: nowrap;
+}
+
+#widget {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  padding: 0;
+  background: transparent !important;
+}
+
+.card {
+  min-width: 0;
+  padding: 12px;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  border-radius: var(--radius-2xl);
+  corner-shape: var(--corner-shape);
+  color: var(--card-foreground);
+  background: var(--card);
+}
+
+#widget &gt; :not(.card, .progress) {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.tooltip {
+  position: fixed;
+  z-index: 50;
+  top: 0;
+  left: 0;
+  width: max-content;
+  max-width: min(
+    20rem,
+    var(--tooltip-available-width, calc(100vw - 10px)),
+    calc(100vw - 10px)
+  );
+  max-height: min(
+    var(--tooltip-available-height, calc(100vh - 10px)),
+    calc(100vh - 10px)
+  );
+  padding: 4px 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  corner-shape: var(--corner-shape);
+  color: var(--popover-foreground);
+  background: var(--popover);
+  box-shadow: none;
+  font-size: var(--font-size-tooltip);
+  line-height: var(--line-height-tooltip);
+  overflow-wrap: break-word;
+  white-space: normal;
+  pointer-events: none;
+  user-select: none;
+}
+
+.viz-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(max(180px, 24%), 1fr));
+  gap: 10px;
+}
+
+.viz-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.viz-stat-value {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+.viz-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+hr {
+  width: 100%;
+  height: 1px;
+  margin-block: 6px;
+  border: 0;
+  background: var(--border);
+}
+
+.nav {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 4px;
+}
+
+.progress {
+  display: flex;
+  height: 8px;
+  margin-block: calc((var(--line-height-normal, 1.5em) - 8px) / 2);
+  overflow: hidden;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: var(--muted);
+}
+
+.progress-bar:only-child {
+  border-radius: var(--radius-full);
+}
+
+.progress-bar {
+  height: 100%;
+  flex-shrink: 0;
+  border: 0;
+  background: var(--viz-series-1);
+}
+
+.viz-badge {
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  color: var(--accent-foreground);
+  background: var(--accent);
+  font-weight: var(--font-weight-medium);
+}
+
+small,
+.text-small,
+.viz-badge {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+}
+
+.text-muted {
+  color: var(--muted-foreground);
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.viz-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.viz-controls &gt; .form-label {
+  display: grid;
+  min-width: min(100%, 260px);
+  flex: 1 1 280px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 2px 12px;
+  margin-bottom: 0;
+}
+
+.viz-controls &gt; .form-label &gt; :is(.form-control, .form-range, .form-select) {
+  grid-column: 1 / -1;
+}
+
+.btn,
+.nav-link,
+.form-check-input,
+.form-control,
+.form-range,
+.form-select {
+  font: inherit;
+}
+
+.btn,
+.nav-link {
+  appearance: button;
+  display: inline-flex;
+  inline-size: fit-content;
+  max-inline-size: 100%;
+  min-height: 28px;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin: 0;
+  padding: 0 8px;
+  -webkit-app-region: no-drag;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: var(--corner-shape);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  cursor: var(--cursor-interaction, pointer);
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+.btn:is(.btn-block, .viz-tile) {
+  inline-size: 100%;
+}
+
+.btn.viz-tile {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+a.btn {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn:not(:disabled):hover,
+.nav-link:not(:disabled):not([aria-disabled=&quot;true&quot;]):hover {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.btn-primary {
+  border-color: transparent;
+  color: var(--primary-foreground);
+  background: var(--foreground);
+  background-clip: padding-box;
+}
+
+.btn-primary .text-muted {
+  color: color-mix(in srgb, var(--primary-foreground) 50%, transparent);
+}
+
+.btn-primary:not(:disabled):hover {
+  background: color-mix(in srgb, var(--foreground) 80%, transparent);
+  background-clip: padding-box;
+}
+
+.btn-ghost {
+  border-color: transparent;
+  color: var(--muted-foreground);
+  background: transparent;
+}
+
+.btn-ghost:not(:disabled):hover {
+  color: var(--foreground);
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.nav-pills .nav-link {
+  min-width: 0;
+  border-color: transparent;
+  color: var(--muted-foreground);
+  background: transparent;
+}
+
+.nav-justified .nav-link {
+  flex: 1 1 0;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+.nav-pills .nav-link.active {
+  color: var(--foreground);
+  background: var(--muted);
+}
+
+.btn:disabled,
+.nav-link:disabled,
+.nav-link[aria-disabled=&quot;true&quot;] {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+[data-lucide] {
+  stroke-width: 1.6;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--foreground);
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  padding: 0 8px;
+  outline: none;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: var(--corner-shape);
+  color: var(--foreground);
+  background: var(--secondary);
+}
+
+.form-control::placeholder {
+  color: var(--muted-foreground);
+}
+
+.form-control[type=&quot;file&quot;] {
+  padding: 0;
+  overflow: hidden;
+  cursor: var(--cursor-interaction, pointer);
+}
+
+.form-control[type=&quot;file&quot;]::file-selector-button {
+  min-height: 26px;
+  margin-right: 8px;
+  padding: 0 8px;
+  border: 0;
+  border-right: 1px solid var(--input);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  cursor: inherit;
+  font: inherit;
+}
+
+.form-control[type=&quot;file&quot;]:not(:disabled):hover::file-selector-button {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.form-control-color[type=&quot;color&quot;] {
+  width: 40px;
+  height: 28px;
+  padding: 3px;
+  cursor: var(--cursor-interaction, pointer);
+}
+
+.form-control-color[type=&quot;color&quot;]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.form-control-color[type=&quot;color&quot;]::-webkit-color-swatch {
+  border: 0;
+  border-radius: calc(var(--radius-lg) - 4px);
+  corner-shape: var(--corner-shape);
+}
+
+textarea.form-control {
+  height: auto;
+  min-height: 72px;
+  padding: 8px 10px;
+  resize: vertical;
+}
+
+.form-control:focus-visible {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-control:disabled,
+.form-select:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.form-select {
+  appearance: none;
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  margin: 0;
+  padding: 0 32px 0 8px;
+  outline: none;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: var(--corner-shape);
+  color: var(--foreground);
+  background-color: var(--secondary);
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--muted-foreground) 50%),
+    linear-gradient(135deg, var(--muted-foreground) 50%, transparent 50%);
+  background-position:
+    calc(100% - 14px) 50%,
+    calc(100% - 10px) 50%;
+  background-repeat: no-repeat;
+  background-size: 4px 4px;
+  cursor: var(--cursor-interaction, default);
+}
+
+.form-select:not(:disabled):hover {
+  background-color: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.form-select:focus-visible {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-check {
+  display: flex;
+  min-height: 20px;
+  align-items: center;
+  gap: 6px;
+}
+
+.form-check-input {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+  margin: 0;
+  border: 1px solid var(--input);
+  color: var(--primary-foreground);
+  background-color: transparent;
+  cursor: var(--cursor-interaction, default);
+  transition:
+    background-color 150ms,
+    border-color 150ms,
+    box-shadow 150ms;
+}
+
+.form-check:not(.form-switch) .form-check-input[type=&quot;checkbox&quot;] {
+  border-color: var(--input);
+  border-radius: var(--radius-sm);
+  corner-shape: var(--corner-shape);
+  background-color: var(--secondary);
+  box-shadow: var(--shadow-sm);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input:not(:disabled):not(:checked):hover {
+  background-color: var(--card);
+}
+
+.form-check:not(.form-switch) .form-check-input[type=&quot;checkbox&quot;]:checked {
+  border-color: var(--primary);
+  background-color: var(--primary);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input[type=&quot;checkbox&quot;]:checked::before {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-foreground);
+  content: &quot;&quot;;
+  mask: var(--checkmark-image) center / 12px 12px no-repeat;
+}
+
+.form-check-input[type=&quot;radio&quot;] {
+  width: 14px;
+  height: 14px;
+  border-radius: var(--radius-full);
+}
+
+.form-check-input[type=&quot;radio&quot;]:checked {
+  border: 2px solid var(--primary);
+  background:
+    radial-gradient(circle, var(--primary-foreground) 0 2.5px, transparent 3px),
+    var(--primary);
+}
+
+.form-check:not(.form-switch) .form-check-input:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.form-check:not(.form-switch) .form-check-input:disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.form-check:not(.form-switch) .form-check-input:disabled + .form-check-label {
+  cursor: not-allowed;
+}
+
+.form-switch .form-check-input:disabled,
+.form-switch .form-check-input:disabled + .form-check-label {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.form-check-label {
+  color: var(--foreground);
+  cursor: var(--cursor-interaction, default);
+}
+
+.form-switch .form-check-input {
+  position: relative;
+  width: 32px;
+  height: 20px;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: var(--muted);
+  box-shadow: none;
+  transition: background-color 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.form-switch .form-check-input::before {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  box-sizing: border-box;
+  border: 1px solid light-dark(var(--primary-foreground), var(--foreground));
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+  box-shadow: var(--shadow-sm);
+  content: &quot;&quot;;
+  transform: translate(2px, -50%);
+  transition: transform 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.form-switch .form-check-input:checked {
+  background: var(--primary);
+}
+
+.form-switch .form-check-input:checked::before {
+  transform: translate(14px, -50%);
+}
+
+.form-switch .form-check-input:focus-visible {
+  box-shadow: 0 0 0 2px var(--ring);
+}
+
+.form-range {
+  appearance: none;
+  display: block;
+  width: 100%;
+  height: 28px;
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: 0;
+  accent-color: var(--primary);
+  background: linear-gradient(
+      color-mix(in srgb, var(--foreground) 7%, transparent),
+      color-mix(in srgb, var(--foreground) 7%, transparent)
+    )
+    center / 100% 2px no-repeat;
+}
+
+.form-range::-webkit-slider-runnable-track {
+  height: 28px;
+  background: transparent;
+}
+
+.form-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  margin-top: 4px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+}
+
+.form-range:focus-visible::-webkit-slider-thumb {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-range::-moz-range-track {
+  height: 28px;
+  background: transparent;
+}
+
+.form-range::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+}
+
+.form-range:focus-visible::-moz-range-thumb {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-range:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.btn:not(.btn-primary, .viz-tile):is(
+  [aria-pressed=&quot;true&quot;],
+  [aria-selected=&quot;true&quot;],
+  .is-selected
+) {
+  border-color: var(--primary);
+  color: var(--primary-foreground);
+  background: var(--primary);
+}
+
+.btn.viz-tile:is([aria-pressed=&quot;true&quot;], [aria-selected=&quot;true&quot;], .is-selected) {
+  border-color: var(--primary);
+  box-shadow: inset 0 0 0 1px var(--primary);
+}
+
+.btn:focus-visible,
+.nav-link:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+@media (pointer: coarse) {
+  .btn,
+  .nav-link,
+  .form-control,
+  .form-select {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  /* Keep small-screen WebKit from zooming when a text field receives focus. */
+  .form-control,
+  .form-select {
+    font-size: max(16px, var(--font-size-normal));
+  }
+
+  .form-control[type=&quot;file&quot;]::file-selector-button {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .form-control-color[type=&quot;color&quot;] {
+    width: 44px;
+    height: 44px;
+  }
+
+  .form-control:is(
+    [type=&quot;date&quot;],
+    [type=&quot;datetime-local&quot;],
+    [type=&quot;month&quot;],
+    [type=&quot;time&quot;],
+    [type=&quot;week&quot;]
+  ) {
+    min-width: 0;
+    max-width: 100%;
+    padding-block: 8px;
+  }
+
+  .form-check {
+    min-height: 44px;
+    padding-inline: 15px;
+  }
+
+  .form-check-input {
+    position: relative;
+  }
+
+  .form-check-input::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 44px;
+    height: 44px;
+    content: &quot;&quot;;
+    transform: translate(-50%, -50%);
+  }
+
+  .form-check-label {
+    display: inline-flex;
+    min-width: 44px;
+    min-height: 44px;
+    align-items: center;
+  }
+
+  .form-range {
+    height: 44px;
+    touch-action: pan-y;
+  }
+
+  .form-range::-webkit-slider-runnable-track {
+    height: 44px;
+  }
+
+  .form-range::-moz-range-track {
+    height: 44px;
+  }
+
+  .form-range::-webkit-slider-thumb {
+    margin-top: 12px;
+  }
+}
+
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+#widget &gt; svg {
+  width: 100%;
+}
+
+/* Model-authored chart rules can otherwise stretch icons after these styles load. */
+svg.lucide {
+  display: block;
+  width: var(--icon-size) !important;
+  height: var(--icon-size) !important;
+  flex: none;
+  margin: 0 !important;
+  stroke-width: 1.6;
+}
+
+.text-warning,
+.text-destructive {
+  color: var(--destructive);
+}
+
+html&gt;body{padding:0}&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;wh-personal&quot; aria-label=&quot;AWiki 个人工作台设计&quot; data-tone=&quot;sage&quot;&gt;
+&lt;style&gt;
+#wh-personal{--wh-bg:light-dark(#f5f6f2,#171c1a);--wh-paper:light-dark(#ffffff,#222a26);--wh-ink:light-dark(#263b33,#e3ece6);--wh-muted:light-dark(#64756c,#a8b9af);--wh-line:light-dark(#dfe5df,#39483f);--wh-accent:light-dark(#2f6650,#a8d9be);--wh-on:light-dark(#fff,#173325);--wh-soft:light-dark(#e8f0e8,#2c4034);color:var(--wh-ink);background:var(--wh-bg);font:15px/1.65 -apple-system,BlinkMacSystemFont,&#x27;PingFang SC&#x27;,sans-serif;border:1px solid var(--wh-line);border-radius:18px;overflow:hidden}
+#wh-personal[data-tone=&quot;blue&quot;]{--wh-accent:light-dark(#365f87,#a9cbed);--wh-soft:light-dark(#e8eef5,#293a4b);--wh-on:light-dark(#fff,#182e44)}
+#wh-personal *{box-sizing:border-box}#wh-personal button,#wh-personal textarea{font:inherit}#wh-personal button{cursor:pointer;border:1px solid var(--wh-line);border-radius:9px;background:var(--wh-paper);color:var(--wh-ink);padding:9px 15px}#wh-personal button:hover{background:var(--wh-soft)}#wh-personal .primary{background:var(--wh-accent);color:var(--wh-on);border-color:var(--wh-accent)}#wh-personal .primary:hover{opacity:.9}#wh-personal header{padding:18px 25px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:var(--wh-paper);border-bottom:1px solid var(--wh-line)}#wh-personal .brand{font-size:23px;font-weight:600;letter-spacing:-1px}#wh-personal .sub{font-size:12px;color:var(--wh-muted)}#wh-personal .demo{margin-left:auto;font-size:12px;color:var(--wh-muted)}#wh-personal .shell{display:grid;grid-template-columns:160px minmax(0,1fr)}#wh-personal nav{padding:24px 13px;border-right:1px solid var(--wh-line)}#wh-personal nav button{display:block;width:100%;text-align:left;border:0;background:transparent;margin-bottom:7px;padding:11px 12px}#wh-personal nav button[aria-current=&quot;page&quot;]{background:var(--wh-soft);color:var(--wh-accent);font-weight:600}#wh-personal .profile{margin:0 12px 24px;font-size:13px}#wh-personal main{padding:30px;min-width:0}#wh-personal h1{font-size:27px;line-height:1.3;font-weight:600;letter-spacing:-.6px;margin:8px 0 12px}#wh-personal h2{font-size:18px;font-weight:600;margin:0 0 10px}#wh-personal h3{font-size:15px;font-weight:600;margin:0 0 6px}#wh-personal p{margin:7px 0 15px}#wh-personal .eyebrow{font-size:12px;letter-spacing:2px;color:var(--wh-accent)}#wh-personal .muted{color:var(--wh-muted)}#wh-personal .hero{margin:24px 0;background:var(--wh-paper);border:1px solid var(--wh-line);border-radius:13px;padding:24px;border-left:4px solid var(--wh-accent)}#wh-personal .flex{display:flex;align-items:center;gap:12px;flex-wrap:wrap}#wh-personal .spread{justify-content:space-between}#wh-personal .tag{display:inline-block;background:var(--wh-soft);color:var(--wh-accent);border-radius:5px;padding:3px 8px;font-size:12px}#wh-personal .items{display:grid;grid-template-columns:1fr 1fr;gap:14px}#wh-personal .item{padding:18px;background:var(--wh-paper);border:1px solid var(--wh-line);border-radius:12px}#wh-personal .meta{font-size:12px;color:var(--wh-muted);margin:12px 0}#wh-personal .line{border-top:1px solid var(--wh-line);padding-top:16px;margin-top:18px}#wh-personal .doclayout{display:grid;grid-template-columns:minmax(0,1fr) 230px;gap:18px;margin-top:20px}#wh-personal article{padding:25px;background:var(--wh-paper);border:1px solid var(--wh-line);border-radius:12px}#wh-personal blockquote{margin:18px 0;padding:13px 16px;background:var(--wh-soft);border-left:3px solid var(--wh-accent);border-radius:0 7px 7px 0}#wh-personal aside{font-size:13px}#wh-personal aside section{padding:16px 0;border-bottom:1px solid var(--wh-line)}#wh-personal .tree{line-height:2;color:var(--wh-muted);font-size:13px;padding:0;list-style:none}#wh-personal textarea{display:block;width:100%;background:var(--wh-paper);color:var(--wh-ink);border:1px solid var(--wh-line);border-radius:9px;padding:12px;min-height:88px;resize:vertical;margin:8px 0 20px;font-size:16px}#wh-personal .choices{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0 20px}#wh-personal .choice{text-align:left;padding:17px}#wh-personal .choice[aria-pressed=&quot;true&quot;]{border:2px solid var(--wh-accent);background:var(--wh-soft);padding:16px}#wh-personal .choice span{display:block;font-size:12px;margin-top:8px;color:var(--wh-muted)}#wh-personal .notice{padding:14px 17px;background:var(--wh-soft);border-radius:9px;font-size:13px;margin:18px 0}#wh-personal [hidden]{display:none!important}#wh-personal footer{border-top:1px solid var(--wh-line);padding:12px 25px;font-size:12px;color:var(--wh-muted);display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}#wh-personal .result{white-space:pre-wrap;font-size:13px;margin-top:15px;padding:16px;border:1px solid var(--wh-line);border-radius:9px;background:var(--wh-paper)}#wh-personal[data-density=&quot;compact&quot;] main{padding:22px}#wh-personal[data-density=&quot;compact&quot;] .hero{padding:18px;margin:18px 0}
+@media(max-width:800px){#wh-personal .doclayout{grid-template-columns:1fr}#wh-personal aside{display:grid;grid-template-columns:1fr 1fr;gap:14px}#wh-personal main{padding:22px}#wh-personal .shell{grid-template-columns:140px minmax(0,1fr)}}
+@media(max-width:560px){#wh-personal .shell{display:block}#wh-personal nav{display:flex;gap:4px;padding:8px;border-right:0;border-bottom:1px solid var(--wh-line)}#wh-personal nav button{width:auto;flex:1;text-align:center;padding:10px 4px;font-size:13px;margin:0}#wh-personal .profile{display:none}#wh-personal main{padding:20px 16px}#wh-personal .items,#wh-personal .choices,#wh-personal aside{grid-template-columns:1fr}#wh-personal h1{font-size:24px}#wh-personal header{padding:14px 16px}#wh-personal .hero,#wh-personal article{padding:18px}#wh-personal .demo{margin-left:0}#wh-personal .sub{display:none}}
+&lt;/style&gt;
+&lt;header&gt;&lt;span class=&quot;brand&quot;&gt;awiki&lt;span style=&quot;color:var(--wh-accent)&quot;&gt;.&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;sub&quot;&gt;Agentic Workhub / 个人工作台&lt;/span&gt;&lt;span class=&quot;demo&quot;&gt;交互概念稿 · 全部为演示内容&lt;/span&gt;&lt;/header&gt;
+&lt;div class=&quot;shell&quot;&gt;&lt;nav aria-label=&quot;工作台页面&quot;&gt;&lt;div class=&quot;profile&quot;&gt;Sean 的空间&lt;br&gt;&lt;span class=&quot;muted&quot;&gt;工作在这里继续。&lt;/span&gt;&lt;/div&gt;&lt;button data-page=&quot;home&quot; aria-current=&quot;page&quot;&gt;01　我的工作&lt;/button&gt;&lt;button data-page=&quot;doc&quot;&gt;02　文档与背景&lt;/button&gt;&lt;button data-page=&quot;continue&quot;&gt;03　接着讨论&lt;/button&gt;&lt;/nav&gt;
+&lt;main&gt;
+&lt;section data-screen=&quot;home&quot;&gt;&lt;div class=&quot;eyebrow&quot;&gt;找得到 / YOUR WORK, TOGETHER&lt;/div&gt;&lt;h1 id=&quot;wh-greeting&quot;&gt;回来就能接着做。&lt;/h1&gt;&lt;p class=&quot;muted&quot;&gt;文档、想法和聊过的背景，都留在自己的工作里。&lt;/p&gt;
+&lt;div class=&quot;hero&quot;&gt;&lt;div class=&quot;flex spread&quot;&gt;&lt;span class=&quot;tag&quot;&gt;上次停在这里&lt;/span&gt;&lt;span class=&quot;sub&quot;&gt;旅行计划 · 演示项目&lt;/span&gt;&lt;/div&gt;&lt;h2 style=&quot;margin-top:18px&quot;&gt;秋天，带家人去京都&lt;/h2&gt;&lt;p&gt;路线已经有了，还差一点从容。&lt;/p&gt;&lt;p class=&quot;muted&quot;&gt;已确定：住同一家酒店、不每天换城市。&lt;br&gt;还没决定：第三天是否保留岚山，怎样减少步行。&lt;/p&gt;&lt;div class=&quot;meta&quot;&gt;来自「一家人的秋日旅行」会话 · 关联 3 篇文档&lt;/div&gt;&lt;button class=&quot;primary&quot; data-page=&quot;doc&quot;&gt;打开计划，想起背景 →&lt;/button&gt;&lt;/div&gt;
+&lt;div class=&quot;flex spread&quot; style=&quot;margin-bottom:12px&quot;&gt;&lt;h2&gt;我的工作，不只是聊天记录&lt;/h2&gt;&lt;/div&gt;&lt;div class=&quot;items&quot;&gt;&lt;div class=&quot;item&quot;&gt;&lt;span class=&quot;tag&quot;&gt;随笔&lt;/span&gt;&lt;h3 style=&quot;margin-top:12px&quot;&gt;AI 应该围绕我的工作&lt;/h3&gt;&lt;p class=&quot;muted&quot;&gt;从“空间站与机械臂”的比喻，整理下一篇文章。&lt;/p&gt;&lt;div class=&quot;meta&quot;&gt;写作目标：讲清楚为什么成果应该留在 Agent 之外&lt;/div&gt;&lt;/div&gt;&lt;div class=&quot;item&quot;&gt;&lt;span class=&quot;tag&quot;&gt;小实验&lt;/span&gt;&lt;h3 style=&quot;margin-top:12px&quot;&gt;让自动化更可靠&lt;/h3&gt;&lt;p class=&quot;muted&quot;&gt;保存失败与恢复的线索，下次不再从头排查。&lt;/p&gt;&lt;div class=&quot;meta&quot;&gt;待续问题：异常时怎样提醒，而不是静默失败&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/section&gt;
+&lt;section data-screen=&quot;doc&quot; hidden&gt;&lt;div class=&quot;eyebrow&quot;&gt;想得起 / MORE THAN A DOCUMENT&lt;/div&gt;&lt;div class=&quot;flex spread&quot;&gt;&lt;h1&gt;秋天，带家人去京都&lt;/h1&gt;&lt;button data-action=&quot;original&quot;&gt;飞书打开 ↗&lt;/button&gt;&lt;/div&gt;&lt;p class=&quot;muted&quot;&gt;原文与背景在一起。你不必先想起，自己在哪个聊天里说过。&lt;/p&gt;
+&lt;div class=&quot;doclayout&quot;&gt;&lt;article&gt;&lt;div class=&quot;meta&quot;&gt;行程草案 · 原文区域示意，非实时飞书嵌入&lt;/div&gt;&lt;h2&gt;一趟不赶路的旅行&lt;/h2&gt;&lt;p&gt;这次不追求走遍所有景点。给家人留出坐下来喝茶、散步，以及临时改变主意的空间。&lt;/p&gt;&lt;h3 class=&quot;line&quot;&gt;已经确定&lt;/h3&gt;&lt;p&gt;全程住在同一区域；每天只安排一个主要目的地；午后留出休息时间。&lt;/p&gt;&lt;h3 class=&quot;line&quot;&gt;第三天 · 还想再推敲&lt;/h3&gt;&lt;blockquote&gt;上午去岚山，下午再安排两座寺院。担心交通与步行太多，家人会累。&lt;/blockquote&gt;&lt;button data-action=&quot;quote&quot; class=&quot;primary&quot;&gt;围绕这一段，接着讨论 →&lt;/button&gt;&lt;div class=&quot;line&quot;&gt;&lt;h3&gt;相关子文档&lt;/h3&gt;&lt;ul class=&quot;tree&quot;&gt;&lt;li&gt;↳ 住宿选择与取舍&lt;/li&gt;&lt;li&gt;↳ 每日路线草案（当前）&lt;/li&gt;&lt;li&gt;↳ 待确认的交通问题&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/article&gt;
+&lt;aside&gt;&lt;section&gt;&lt;span class=&quot;eyebrow&quot;&gt;这份文档为什么存在&lt;/span&gt;&lt;p&gt;目标是让一家人轻松出行，不是凑齐一张景点清单。&lt;/p&gt;&lt;/section&gt;&lt;section&gt;&lt;h3&gt;从哪次讨论而来&lt;/h3&gt;&lt;p&gt;一家人的秋日旅行&lt;br&gt;&lt;span class=&quot;muted&quot;&gt;ChatGPT · 会话自述（演示）&lt;/span&gt;&lt;/p&gt;&lt;p&gt;讨论过家人的节奏、酒店位置和一天的活动量。&lt;/p&gt;&lt;button data-page=&quot;continue&quot;&gt;带着这个背景继续&lt;/button&gt;&lt;/section&gt;&lt;section&gt;&lt;h3&gt;仍未解决&lt;/h3&gt;&lt;p&gt;岚山值得单独安排一天吗？下雨时怎样替换路线？&lt;/p&gt;&lt;/section&gt;&lt;/aside&gt;&lt;/div&gt;&lt;p data-original-note hidden class=&quot;notice&quot;&gt;演示文档没有真实飞书地址。正式界面将在这里打开同一篇原文。&lt;/p&gt;
+&lt;/section&gt;
+&lt;section data-screen=&quot;continue&quot; hidden&gt;&lt;div class=&quot;eyebrow&quot;&gt;接得上 / CONTINUE WITH CONTEXT&lt;/div&gt;&lt;h1&gt;这一次，不从头解释。&lt;/h1&gt;&lt;p class=&quot;muted&quot;&gt;带上原文、已有结论和你的新问题，再选择在哪里继续。&lt;/p&gt;&lt;div class=&quot;notice&quot;&gt;正在接续：秋天，带家人去京都 / 每日路线草案&lt;br&gt;引用：上午去岚山，下午再安排两座寺院。担心家人会累。&lt;/div&gt;&lt;label for=&quot;wh-question&quot;&gt;你现在想补充什么？&lt;/label&gt;&lt;textarea id=&quot;wh-question&quot;&gt;第三天想轻松一点。请结合前面的安排，比较保留岚山和留在市区这两个选择。&lt;/textarea&gt;&lt;h3&gt;选择一个讨论上下文&lt;/h3&gt;&lt;div class=&quot;choices&quot;&gt;&lt;button class=&quot;choice&quot; data-context=&quot;original&quot; aria-pressed=&quot;true&quot;&gt;◉ 回到原会话&lt;span&gt;一家人的秋日旅行 · ChatGPT&lt;/span&gt;&lt;span&gt;已讨论过家人的节奏和住宿取舍。&lt;/span&gt;&lt;/button&gt;&lt;button class=&quot;choice&quot; data-context=&quot;new&quot; aria-pressed=&quot;false&quot;&gt;○ 交给一个新会话&lt;span&gt;携带这份工作的背景摘要&lt;/span&gt;&lt;span&gt;换一个视角，也不丢掉已有决定。&lt;/span&gt;&lt;/button&gt;&lt;/div&gt;&lt;div class=&quot;flex spread&quot;&gt;&lt;span class=&quot;muted&quot; style=&quot;font-size:13px&quot;&gt;本次先读取和讨论，不修改原文&lt;/span&gt;&lt;button class=&quot;primary&quot; data-action=&quot;prepare&quot;&gt;准备继续讨论 →&lt;/button&gt;&lt;/div&gt;&lt;div id=&quot;wh-handoff&quot; hidden&gt;&lt;div class=&quot;notice&quot;&gt;&lt;h3&gt;讨论指示已准备好&lt;/h3&gt;&lt;span id=&quot;wh-target&quot;&gt;&lt;/span&gt;&lt;br&gt;尚未发送给任何 Agent。演示只生成预览。&lt;/div&gt;&lt;div class=&quot;result&quot; id=&quot;wh-prompt&quot;&gt;&lt;/div&gt;&lt;p class=&quot;meta&quot;&gt;正式版本可采用复制或已验证的平台交接入口。发送、回复和成果登记将分别显示状态。&lt;/p&gt;&lt;button data-page=&quot;doc&quot;&gt;返回文档与背景&lt;/button&gt;&lt;/div&gt;&lt;/section&gt;
+&lt;div aria-live=&quot;polite&quot; id=&quot;wh-status&quot; class=&quot;meta&quot;&gt;&lt;/div&gt;
+&lt;/main&gt;&lt;/div&gt;&lt;footer&gt;&lt;span&gt;AWiki · 工作属于你，Agent 帮你继续。&lt;/span&gt;&lt;span&gt;本次只演示界面，不连接账号、不发送消息&lt;/span&gt;&lt;/footer&gt;
+&lt;script&gt;
+(()=&gt;{const root=document.getElementById(&#x27;wh-personal&#x27;);let context=&#x27;original&#x27;;const state={tone:&#x27;sage&#x27;,density:&#x27;relaxed&#x27;,headline:&#x27;continuity&#x27;};function show(page){root.querySelectorAll(&#x27;[data-screen]&#x27;).forEach(el=&gt;el.hidden=el.dataset.screen!==page);root.querySelectorAll(&#x27;nav [data-page]&#x27;).forEach(el=&gt;{if(el.dataset.page===page)el.setAttribute(&#x27;aria-current&#x27;,&#x27;page&#x27;);else el.removeAttribute(&#x27;aria-current&#x27;)});root.querySelector(&#x27;#wh-status&#x27;).textContent=&#x27;&#x27;}root.querySelectorAll(&#x27;[data-page]&#x27;).forEach(b=&gt;b.addEventListener(&#x27;click&#x27;,()=&gt;show(b.dataset.page)));root.querySelector(&#x27;[data-action=&quot;quote&quot;]&#x27;).addEventListener(&#x27;click&#x27;,()=&gt;show(&#x27;continue&#x27;));root.querySelector(&#x27;[data-action=&quot;original&quot;]&#x27;).addEventListener(&#x27;click&#x27;,()=&gt;{root.querySelector(&#x27;[data-original-note]&#x27;).hidden=false});root.querySelectorAll(&#x27;[data-context]&#x27;).forEach(b=&gt;b.addEventListener(&#x27;click&#x27;,()=&gt;{context=b.dataset.context;root.querySelectorAll(&#x27;[data-context]&#x27;).forEach(x=&gt;{x.setAttribute(&#x27;aria-pressed&#x27;,String(x===b));x.firstChild.textContent=(x===b?&#x27;◉ &#x27;:&#x27;○ &#x27;)+(x.dataset.context===&#x27;original&#x27;?&#x27;回到原会话&#x27;:&#x27;交给一个新会话&#x27;)});root.querySelector(&#x27;#wh-handoff&#x27;).hidden=true}));root.querySelector(&#x27;[data-action=&quot;prepare&quot;]&#x27;).addEventListener(&#x27;click&#x27;,()=&gt;{const q=root.querySelector(&#x27;#wh-question&#x27;).value.trim();if(!q){root.querySelector(&#x27;#wh-status&#x27;).textContent=&#x27;请先写下这次想讨论的问题。&#x27;;return}root.querySelector(&#x27;#wh-status&#x27;).textContent=&#x27;&#x27;;root.querySelector(&#x27;#wh-handoff&#x27;).hidden=false;root.querySelector(&#x27;#wh-target&#x27;).textContent=context===&#x27;original&#x27;?&#x27;目标：原会话「一家人的秋日旅行」&#x27;:&#x27;目标：新会话，附带已有背景&#x27;;root.querySelector(&#x27;#wh-prompt&#x27;).textContent=&#x27;【演示指示 · 不含真实资源地址】\n请先读取「秋天，带家人去京都 / 每日路线草案」的最新内容。\n已有决定：住同一区域，每天一个主要目的地，午后休息。\n关注片段：第三天岚山与寺院安排可能过于紧凑。\n我的补充：&#x27;+q+&#x27;\n先比较方案并说明取舍，本次不要修改原文。&#x27;});root.querySelector(&#x27;#wh-question&#x27;).addEventListener(&#x27;input&#x27;,()=&gt;root.querySelector(&#x27;#wh-handoff&#x27;).hidden=true);function render(){root.dataset.tone=state.tone;root.dataset.density=state.density;root.querySelector(&#x27;#wh-greeting&#x27;).textContent=state.headline===&#x27;continuity&#x27;?&#x27;回来就能接着做。&#x27;:&#x27;你的想法，有了自己的地方。&#x27;}render();if(globalThis.Tweak){const t=new Tweak({container:root,onChange:render});t.addSelect(state,&#x27;tone&#x27;,{label:&#x27;界面气质&#x27;,options:[{label:&#x27;温和鼠尾草绿&#x27;,value:&#x27;sage&#x27;},{label:&#x27;冷静雾蓝&#x27;,value:&#x27;blue&#x27;}]});t.addSelect(state,&#x27;density&#x27;,{label:&#x27;信息密度&#x27;,options:[{label:&#x27;舒展&#x27;,value:&#x27;relaxed&#x27;},{label:&#x27;紧凑&#x27;,value:&#x27;compact&#x27;}]});t.addSelect(state,&#x27;headline&#x27;,{label:&#x27;首页主张&#x27;,options:[{label:&#x27;工作连续性&#x27;,value:&#x27;continuity&#x27;},{label:&#x27;个人空间感&#x27;,value:&#x27;belonging&#x27;}]})}})();
+&lt;/script&gt;
+&lt;/div&gt;
+
+&lt;script src=&quot;https://unpkg.com/@floating-ui/core@1.7.3/dist/floating-ui.core.umd.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://unpkg.com/@floating-ui/dom@1.7.4/dist/floating-ui.dom.umd.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+(() =&gt; {
+  if (window.FloatingUIDOM == null) {
+    return;
+  }
+  const { autoUpdate, computePosition, flip, offset, shift, size } =
+    window.FloatingUIDOM;
+  const tooltipPlacements = new Set([&quot;top&quot;, &quot;right&quot;, &quot;bottom&quot;, &quot;left&quot;]);
+  const tooltipId = `codex-visualization-tooltip-${
+    window.crypto?.randomUUID?.() ?? Date.now().toString(36)
+  }`;
+  const tooltipGap = 5;
+  const hoverDelay = 700;
+  const skipDelay = 300;
+  let activeTrigger = null;
+  let pendingTrigger = null;
+  let tooltip = null;
+  let openTimeout = null;
+  let autoUpdateCleanup = null;
+  let positionRequest = 0;
+  let skipDelayUntil = 0;
+  let lastPointerWasTouch = false;
+  let pinnedByTouch = false;
+
+  const getTrigger = (target) =&gt;
+    target?.nodeType === Node.ELEMENT_NODE
+      ? target.closest(&quot;[data-tooltip]&quot;)
+      : null;
+  const containsTarget = (trigger, target) =&gt;
+    target?.nodeType != null &amp;&amp; trigger.contains(target);
+  const getContent = (trigger) =&gt;
+    trigger.getAttribute(&quot;data-tooltip&quot;)?.trim() ?? &quot;&quot;;
+  const getPlacement = (trigger) =&gt; {
+    const placement = trigger.getAttribute(&quot;data-tooltip-placement&quot;);
+    return tooltipPlacements.has(placement) ? placement : &quot;top&quot;;
+  };
+  const getTooltip = () =&gt; {
+    if (tooltip == null) {
+      tooltip = document.createElement(&quot;div&quot;);
+      tooltip.id = tooltipId;
+      tooltip.className = &quot;tooltip&quot;;
+      tooltip.setAttribute(&quot;role&quot;, &quot;tooltip&quot;);
+    }
+    return tooltip;
+  };
+  const setDescribedBy = (trigger, described) =&gt; {
+    const ids = new Set(
+      (trigger.getAttribute(&quot;aria-describedby&quot;) ?? &quot;&quot;)
+        .split(/\s+/)
+        .filter(Boolean),
+    );
+    if (described) {
+      ids.add(tooltipId);
+    } else {
+      ids.delete(tooltipId);
+    }
+    if (ids.size === 0) {
+      trigger.removeAttribute(&quot;aria-describedby&quot;);
+    } else {
+      trigger.setAttribute(&quot;aria-describedby&quot;, [...ids].join(&quot; &quot;));
+    }
+  };
+  const clearOpenTimeout = () =&gt; {
+    if (openTimeout != null) {
+      window.clearTimeout(openTimeout);
+      openTimeout = null;
+    }
+    pendingTrigger = null;
+  };
+  const closeTooltip = (activateSkipDelay = true) =&gt; {
+    clearOpenTimeout();
+    pinnedByTouch = false;
+    positionRequest += 1;
+    autoUpdateCleanup?.();
+    autoUpdateCleanup = null;
+    if (activeTrigger == null) {
+      return;
+    }
+    setDescribedBy(activeTrigger, false);
+    activeTrigger = null;
+    tooltip?.remove();
+    if (activateSkipDelay) {
+      skipDelayUntil = Date.now() + skipDelay;
+    }
+  };
+  const updatePosition = (trigger, floating) =&gt; {
+    const request = ++positionRequest;
+    void computePosition(trigger, floating, {
+      middleware: [
+        offset(tooltipGap),
+        flip({ padding: tooltipGap }),
+        shift({ padding: tooltipGap }),
+        size({
+          padding: tooltipGap,
+          apply({ availableHeight, availableWidth, elements }) {
+            elements.floating.style.setProperty(
+              &quot;--tooltip-available-width&quot;,
+              `${Math.max(0, availableWidth)}px`,
+            );
+            elements.floating.style.setProperty(
+              &quot;--tooltip-available-height&quot;,
+              `${Math.max(0, availableHeight)}px`,
+            );
+          },
+        }),
+      ],
+      placement: getPlacement(trigger),
+      strategy: &quot;fixed&quot;,
+    })
+      .then(({ x, y }) =&gt; {
+        if (activeTrigger !== trigger || request !== positionRequest) {
+          return;
+        }
+        const scale = window.devicePixelRatio || 1;
+        floating.style.transform = `translate(${Math.round(x * scale) / scale}px, ${Math.round(y * scale) / scale}px)`;
+        floating.style.visibility = &quot;visible&quot;;
+      })
+      .catch(() =&gt; {
+        if (activeTrigger === trigger &amp;&amp; request === positionRequest) {
+          closeTooltip(false);
+        }
+      });
+  };
+  const openTooltip = (trigger) =&gt; {
+    const content = getContent(trigger);
+    if (!trigger.isConnected || content.length === 0) {
+      return;
+    }
+    clearOpenTimeout();
+    if (activeTrigger === trigger) {
+      return;
+    }
+    closeTooltip();
+    const floating = getTooltip();
+    floating.textContent = content;
+    floating.style.visibility = &quot;hidden&quot;;
+    floating.style.transform = &quot;translate(0, 0)&quot;;
+    document.body.appendChild(floating);
+    activeTrigger = trigger;
+    setDescribedBy(trigger, true);
+    autoUpdateCleanup = autoUpdate(trigger, floating, () =&gt; {
+      updatePosition(trigger, floating);
+    });
+  };
+  const requestOpen = (trigger, immediate = false) =&gt; {
+    if (
+      getContent(trigger).length === 0 ||
+      activeTrigger === trigger ||
+      pendingTrigger === trigger
+    ) {
+      return;
+    }
+    clearOpenTimeout();
+    pendingTrigger = trigger;
+    const delay =
+      immediate || activeTrigger != null || Date.now() &lt; skipDelayUntil
+        ? 0
+        : hoverDelay;
+    if (delay === 0) {
+      openTooltip(trigger);
+      return;
+    }
+    openTimeout = window.setTimeout(() =&gt; {
+      openTimeout = null;
+      pendingTrigger = null;
+      openTooltip(trigger);
+    }, delay);
+  };
+  const handlePointerOpen = (event) =&gt; {
+    if (event.pointerType === &quot;touch&quot;) {
+      return;
+    }
+    const trigger = getTrigger(event.target);
+    if (trigger == null || containsTarget(trigger, event.relatedTarget)) {
+      return;
+    }
+    requestOpen(trigger);
+  };
+  const handlePointer = (event) =&gt; {
+    lastPointerWasTouch =
+      event.type === &quot;pointerdown&quot; &amp;&amp; event.pointerType === &quot;touch&quot;;
+  };
+  const handleTouchClick = (event) =&gt; {
+    const isTouch = event.pointerType === &quot;touch&quot; || lastPointerWasTouch;
+    lastPointerWasTouch = false;
+    if (!isTouch || event.detail === 0) {
+      return;
+    }
+    const trigger = getTrigger(event.target);
+    if (
+      trigger == null ||
+      !trigger.isConnected ||
+      getContent(trigger).length === 0 ||
+      (pinnedByTouch &amp;&amp; activeTrigger === trigger)
+    ) {
+      if (pinnedByTouch) {
+        closeTooltip();
+      }
+      return;
+    }
+    openTooltip(trigger);
+    pinnedByTouch = activeTrigger === trigger;
+    window.setTimeout(() =&gt; {
+      if (activeTrigger === trigger &amp;&amp; !trigger.isConnected) {
+        closeTooltip(false);
+      }
+    }, 0);
+  };
+  const handleLeave = (event) =&gt; {
+    if (pinnedByTouch) {
+      return;
+    }
+    const trigger = getTrigger(event.target);
+    if (trigger == null || containsTarget(trigger, event.relatedTarget)) {
+      return;
+    }
+    if (activeTrigger === trigger || pendingTrigger === trigger) {
+      closeTooltip();
+    }
+  };
+  const handleFocusIn = (event) =&gt; {
+    const trigger = getTrigger(event.target);
+    if (trigger?.matches(&quot;:focus-visible&quot;)) {
+      requestOpen(trigger, true);
+    }
+  };
+  const handleKeyDown = (event) =&gt; {
+    if (event.key === &quot;Escape&quot;) {
+      closeTooltip();
+    }
+  };
+  const handleContextMenu = (event) =&gt; {
+    lastPointerWasTouch = false;
+    const trigger = getTrigger(event.target);
+    if (activeTrigger === trigger || pendingTrigger === trigger) {
+      closeTooltip();
+    }
+  };
+  const destroy = () =&gt; {
+    closeTooltip(false);
+    lastPointerWasTouch = false;
+    document.removeEventListener(&quot;pointerover&quot;, handlePointerOpen);
+    document.removeEventListener(&quot;pointerdown&quot;, handlePointer);
+    document.removeEventListener(&quot;pointercancel&quot;, handlePointer);
+    document.removeEventListener(&quot;click&quot;, handleTouchClick);
+    document.removeEventListener(&quot;pointerout&quot;, handleLeave);
+    document.removeEventListener(&quot;focusin&quot;, handleFocusIn);
+    document.removeEventListener(&quot;focusout&quot;, handleLeave);
+    document.removeEventListener(&quot;keydown&quot;, handleKeyDown);
+    document.removeEventListener(&quot;contextmenu&quot;, handleContextMenu);
+    tooltip = null;
+  };
+
+  document.addEventListener(&quot;pointerover&quot;, handlePointerOpen);
+  document.addEventListener(&quot;pointerdown&quot;, handlePointer);
+  document.addEventListener(&quot;pointercancel&quot;, handlePointer);
+  document.addEventListener(&quot;click&quot;, handleTouchClick);
+  document.addEventListener(&quot;pointerout&quot;, handleLeave);
+  document.addEventListener(&quot;focusin&quot;, handleFocusIn);
+  document.addEventListener(&quot;focusout&quot;, handleLeave);
+  document.addEventListener(&quot;keydown&quot;, handleKeyDown);
+  document.addEventListener(&quot;contextmenu&quot;, handleContextMenu);
+  window.addEventListener(&quot;pagehide&quot;, destroy, { once: true });
+})();
+&lt;/script&gt;
+&lt;script id=&quot;codex-visualization-tabs&quot;&gt;
+(() =&gt; {
+  const selector = &#x27;.nav[role=&quot;tablist&quot;] [role=&quot;tab&quot;]&#x27;;
+  const disabled = &#x27;:disabled,[aria-disabled=&quot;true&quot;]&#x27;;
+  const selectTab = (selected) =&gt; {
+    const panelId = selected.getAttribute(&quot;aria-controls&quot;);
+    for (const tab of selected.closest(&#x27;[role=&quot;tablist&quot;]&#x27;).querySelectorAll(&#x27;[role=&quot;tab&quot;]&#x27;)) {
+      const active = tab === selected;
+      tab.classList.toggle(&quot;active&quot;, active);
+      tab.setAttribute(&quot;aria-selected&quot;, String(active));
+      const id = tab.getAttribute(&quot;aria-controls&quot;);
+      const panel = id &amp;&amp; document.getElementById(id);
+      if (panel != null) {
+        panel.hidden = id !== panelId;
+        if (!panel.hidden &amp;&amp; selected.id) {
+          panel.setAttribute(&quot;aria-labelledby&quot;, selected.id);
+        }
+      }
+    }
+  };
+  const interact = (event) =&gt; {
+    const tab = event.target?.closest?.(selector);
+    if (event.defaultPrevented || tab == null || tab.matches(disabled)) {
+      return;
+    }
+    if (event.type === &quot;click&quot;) {
+      selectTab(tab);
+      return;
+    }
+    const tabs = Array.from(
+      tab.closest(&#x27;[role=&quot;tablist&quot;]&#x27;).querySelectorAll(&#x27;[role=&quot;tab&quot;]&#x27;),
+    ).filter((candidate) =&gt; !candidate.matches(disabled));
+    const current = tabs.indexOf(tab);
+    let next;
+    if (event.key === &quot;ArrowRight&quot; || event.key === &quot;ArrowDown&quot;) {
+      next = (current + 1) % tabs.length;
+    } else if (event.key === &quot;ArrowLeft&quot; || event.key === &quot;ArrowUp&quot;) {
+      next = (current + tabs.length - 1) % tabs.length;
+    } else if (event.key === &quot;Home&quot;) {
+      next = 0;
+    } else if (event.key === &quot;End&quot;) {
+      next = tabs.length - 1;
+    } else {
+      return;
+    }
+    event.preventDefault();
+    tabs[next].focus();
+    selectTab(tabs[next]);
+  };
+
+  for (const list of document.querySelectorAll(&#x27;.nav[role=&quot;tablist&quot;]&#x27;)) {
+    const selected =
+      list.querySelector(&#x27;[role=&quot;tab&quot;][aria-selected=&quot;true&quot;]&#x27;) ??
+      list.querySelector(&#x27;[role=&quot;tab&quot;].active&#x27;) ??
+      list.querySelector(&#x27;[role=&quot;tab&quot;]&#x27;);
+    if (selected != null) {
+      selectTab(selected);
+    }
+  }
+  document.addEventListener(&quot;click&quot;, interact);
+  document.addEventListener(&quot;keydown&quot;, interact);
+  window.addEventListener(&quot;pagehide&quot;, () =&gt; {
+    document.removeEventListener(&quot;click&quot;, interact);
+    document.removeEventListener(&quot;keydown&quot;, interact);
+  }, { once: true });
+})();
+&lt;/script&gt;
+&lt;script id=&quot;codex-visualization-lucide&quot; async src=&quot;https://unpkg.com/lucide@1.17.0/dist/umd/lucide.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+(() =&gt; {
+  const initialize = () =&gt; {
+    globalThis.lucide?.createIcons({ attrs: { width: 16, height: 16 } });
+  };
+  if (globalThis.lucide != null) {
+    initialize();
+    return;
+  }
+  document
+    .getElementById(&quot;codex-visualization-lucide&quot;)
+    ?.addEventListener(&quot;load&quot;, initialize, { once: true });
+})();
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+"></iframe>
+</body>
+</html>
